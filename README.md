@@ -2,7 +2,7 @@
 
 Personal website of **Sardor Murtazaev** — MBA candidate in Finance & AI at Sejong University.
 
-🌐 Live at: [sarriick.github.io/sardormurtazaev.github.io](sarriick.github.io/sardormurtazaev.github.io)
+🌐 Live at: [[sarriick.github.io/sardormurtazaev.github.io](https://sarriick.github.io/sardormurtazaev.github.io/)]
 
 ---
 
