@@ -20,9 +20,9 @@
   --bdr:rgba(106,158,114,.15);
   --bds:rgba(232,223,200,.06);
   --glo:rgba(106,158,114,.15);
-  --fh:'Playfair Display',Georgia,serif;
-  --fb:'Jost',system-ui,sans-serif;
-  --fm:'Courier Prime','Courier New',monospace;
+  --fh:'DM Serif Display',Georgia,serif;
+  --fb:'Inter',system-ui,sans-serif;
+  --fm:'DM Mono','Courier New',monospace;
   --mw:1100px;
   --mn:740px;
 }
@@ -53,10 +53,10 @@ a{color:inherit;text-decoration:none}
 .nav.stuck{background:rgba(12,18,14,.95);backdrop-filter:blur(16px);padding:1rem 3rem;border-bottom:1px solid var(--bds)}
 .nav-prog{position:absolute;bottom:0;left:0;height:1px;background:var(--acc);width:0;transition:width .1s linear}
 .nav-logo{display:flex;align-items:baseline;gap:.5rem}
-.nav-logo b{font-family:var(--fh);font-size:1.1rem;color:var(--acc);font-weight:700}
+.nav-logo b{font-family:var(--fh);font-size:1.15rem;color:var(--acc);font-weight:400;letter-spacing:.02em}
 .nav-logo span{font-family:var(--fm);font-size:.6rem;color:var(--cmt);letter-spacing:.12em}
 .nav-links{list-style:none;display:flex;gap:2rem}
-.nav-links a{font-family:var(--fm);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cmt);transition:color .2s}
+.nav-links a{font-family:var(--fm);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cmt);transition:color .2s;display:block;overflow:hidden;height:1.1em;line-height:1.1em}
 .nav-links a:hover{color:var(--acc)}
 
 /* HERO */
@@ -147,7 +147,7 @@ a{color:inherit;text-decoration:none}
 .stats-row{display:flex;align-items:stretch}
 .stat{flex:1;padding:3.5rem 2rem;display:flex;flex-direction:column;align-items:center;text-align:center;transition:background .3s}
 .stat:hover{background:rgba(45,74,50,.3)}
-.sn{font-family:var(--fh);font-size:clamp(2.8rem,5vw,4.2rem);font-weight:700;color:var(--acc);line-height:1;display:block;margin-bottom:.15rem}
+.sn{font-family:var(--fh);font-size:clamp(2.8rem,5vw,4.2rem);font-weight:400;color:var(--acc);line-height:1;display:block;margin-bottom:.7rem}
 .su{font-family:var(--fm);font-size:.72rem;color:var(--amb);display:block;margin-bottom:.4rem}
 .sl{font-family:var(--fm);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cdp);line-height:1.6}
 .stat-div{width:1px;background:var(--bds);margin:2.5rem 0;flex-shrink:0}
@@ -176,7 +176,7 @@ a{color:inherit;text-decoration:none}
 .ptop{display:flex;align-items:center;justify-content:space-between;margin-bottom:.85rem}
 .pstack{font-family:var(--fm);font-size:.67rem;color:var(--amb);letter-spacing:.06em}
 .pbadge{font-family:var(--fm);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cdp);border:1px solid var(--bds);padding:.18rem .65rem;border-radius:20px}
-.pc h3{font-family:var(--fh);font-weight:400;font-size:1.45rem;color:var(--crm);margin-bottom:.75rem;transition:color .2s}
+.pc h3{font-family:var(--fh);font-size:1.5rem;color:var(--crm);margin-bottom:.75rem;transition:color .2s}
 .pc:hover h3{color:var(--acc)}
 .pc p{font-size:.88rem;color:var(--cmt);max-width:640px;margin-bottom:1.2rem;line-height:1.75}
 .plink{font-family:var(--fm);font-size:.7rem;letter-spacing:.08em;color:var(--acc);transition:letter-spacing .2s}
