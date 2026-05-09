@@ -1,358 +1,225 @@
-/* ================================================
-   FOREST NIGHT — main.js
-   Effects:
-   1. Custom cursor (ring + dot, lag)
-   2. Click ripple
-   3. Falling leaves / particles on canvas
-   4. Hero letter scramble + split animation
-   5. Magnetic buttons / links
-   6. 3D card tilt on hover
-   7. Nav scroll state + progress bar
-   8. Scroll reveal (IntersectionObserver, stagger)
-   9. Animated stat counters (easeOutQuart)
-   10. Nav link hover (roll-up text)
-   ================================================ */
+(function(){
+'use strict';
 
-(function () {
-  'use strict';
+/* ── CURSOR ── */
+var ring=document.getElementById('c-ring');
+var dot=document.getElementById('c-dot');
+var mx=-200,my=-200,rx=-200,ry=-200;
+document.addEventListener('mousemove',function(e){
+  mx=e.clientX;my=e.clientY;
+  if(dot){dot.style.left=mx+'px';dot.style.top=my+'px';}
+});
+function tickC(){
+  rx+=(mx-rx)*.1;ry+=(my-ry)*.1;
+  if(ring){ring.style.left=rx+'px';ring.style.top=ry+'px';}
+  requestAnimationFrame(tickC);
+}
+tickC();
+document.querySelectorAll('a,button,.tc').forEach(function(el){
+  el.addEventListener('mouseenter',function(){ring&&ring.classList.add('big')});
+  el.addEventListener('mouseleave',function(){ring&&ring.classList.remove('big')});
+});
 
-  /* ──────────────────────────────────────────
-     1. CUSTOM CURSOR
-  ────────────────────────────────────────── */
-  const ring = document.getElementById('cursor-ring');
-  const dot  = document.getElementById('cursor-dot');
-  let mx = -200, my = -200, rx = -200, ry = -200;
+/* ── CLICK RIPPLE ── */
+var rw=document.getElementById('ripple-wrap');
+document.addEventListener('click',function(e){
+  if(!rw)return;
+  var r=document.createElement('div');
+  r.className='rpl';
+  r.style.left=e.clientX+'px';r.style.top=e.clientY+'px';
+  r.style.width=r.style.height='60px';
+  rw.appendChild(r);
+  r.addEventListener('animationend',function(){r.remove()});
+});
 
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    dot.style.left  = mx + 'px';
-    dot.style.top   = my + 'px';
+/* ── FOREST PARTICLE CANVAS ── */
+var fc=document.getElementById('fc');
+if(fc){
+  var ctx=fc.getContext('2d');
+  var W,H,pts=[];
+  var mouse={x:-999,y:-999};
+  var COLS=['rgba(90,138,100,','rgba(61,102,68,','rgba(45,74,50,','rgba(139,96,64,','rgba(92,61,40,'];
+
+  function resize(){W=fc.width=fc.offsetWidth;H=fc.height=fc.offsetHeight;}
+  resize();
+  window.addEventListener('resize',function(){resize();init();});
+
+  function mkpt(){
+    return{
+      x:Math.random()*W,y:Math.random()*H,
+      vx:(Math.random()-.5)*.5,vy:Math.random()*.6+.25,
+      sz:Math.random()*4+2.5,
+      rot:Math.random()*Math.PI*2,rv:(Math.random()-.5)*.018,
+      sw:Math.random()*Math.PI*2,ss:Math.random()*.007+.003,sa:Math.random()*.5+.2,
+      col:COLS[Math.floor(Math.random()*COLS.length)],
+      al:Math.random()*.45+.12,
+      sh:Math.floor(Math.random()*3)
+    };
+  }
+  function init(){
+    pts=[];
+    var n=Math.floor(W*H/10000);
+    for(var i=0;i<n;i++){var p=mkpt();p.y=Math.random()*H;pts.push(p);}
+  }
+  init();
+
+  fc.addEventListener('mousemove',function(e){
+    var r=fc.getBoundingClientRect();
+    mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top;
   });
 
-  (function tickCursor() {
-    rx += (mx - rx) * 0.1;
-    ry += (my - ry) * 0.1;
-    if (ring) { ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; }
-    requestAnimationFrame(tickCursor);
-  })();
-
-  document.querySelectorAll('a, button, .tilt-card, .magnetic').forEach(el => {
-    el.addEventListener('mouseenter', () => ring && ring.classList.add('hovering'));
-    el.addEventListener('mouseleave', () => ring && ring.classList.remove('hovering'));
-  });
-
-  /* ──────────────────────────────────────────
-     2. CLICK RIPPLE
-  ────────────────────────────────────────── */
-  const rippleCont = document.getElementById('ripple-container');
-  document.addEventListener('click', e => {
-    if (!rippleCont) return;
-    const r = document.createElement('div');
-    r.className = 'ripple';
-    r.style.left   = e.clientX + 'px';
-    r.style.top    = e.clientY + 'px';
-    r.style.width  = r.style.height = '80px';
-    rippleCont.appendChild(r);
-    r.addEventListener('animationend', () => r.remove());
-  });
-
-  /* ──────────────────────────────────────────
-     3. FALLING LEAVES / FOREST PARTICLES
-  ────────────────────────────────────────── */
-  const canvas = document.getElementById('forest-canvas');
-  if (canvas) {
-    const ctx = canvas.getContext('2d');
-    let W, H, leaves = [], mouse = { x: -999, y: -999 };
-
-    const LEAF_COLORS = [
-      'rgba(90,138,100,',
-      'rgba(61,102,68,',
-      'rgba(45,74,50,',
-      'rgba(139,96,64,',
-      'rgba(92,61,40,',
-      'rgba(176,128,96,',
-    ];
-
-    function resize() {
-      W = canvas.width  = canvas.offsetWidth;
-      H = canvas.height = canvas.offsetHeight;
-    }
-    resize();
-    window.addEventListener('resize', () => { resize(); initLeaves(); });
-
-    function randLeaf() {
-      return {
-        x:  Math.random() * W,
-        y:  Math.random() * H - H,
-        vx: (Math.random() - 0.5) * 0.6,
-        vy: Math.random() * 0.8 + 0.3,
-        size: Math.random() * 5 + 3,
-        rot:  Math.random() * Math.PI * 2,
-        rotV: (Math.random() - 0.5) * 0.02,
-        sway: Math.random() * Math.PI * 2,
-        swayS: Math.random() * 0.008 + 0.004,
-        swayA: Math.random() * 0.6 + 0.2,
-        color: LEAF_COLORS[Math.floor(Math.random() * LEAF_COLORS.length)],
-        alpha: Math.random() * 0.5 + 0.15,
-        shape: Math.floor(Math.random() * 3),
-      };
-    }
-
-    function initLeaves() {
-      leaves = [];
-      const n = Math.floor(W * H / 12000);
-      for (let i = 0; i < n; i++) {
-        const l = randLeaf();
-        l.y = Math.random() * H; // start scattered
-        leaves.push(l);
-      }
-    }
-    initLeaves();
-
-    canvas.addEventListener('mousemove', e => {
-      const r = canvas.getBoundingClientRect();
-      mouse.x = e.clientX - r.left;
-      mouse.y = e.clientY - r.top;
-    });
-
-    function drawLeaf(l) {
-      ctx.save();
-      ctx.translate(l.x, l.y);
-      ctx.rotate(l.rot);
-      ctx.globalAlpha = l.alpha;
-      ctx.fillStyle = l.color + l.alpha + ')';
-
-      if (l.shape === 0) {
-        // Oval leaf
-        ctx.beginPath();
-        ctx.ellipse(0, 0, l.size, l.size * 0.45, 0, 0, Math.PI * 2);
-        ctx.fill();
-      } else if (l.shape === 1) {
-        // Triangle leaf
-        ctx.beginPath();
-        ctx.moveTo(0, -l.size);
-        ctx.lineTo(l.size * 0.6, l.size * 0.5);
-        ctx.lineTo(-l.size * 0.6, l.size * 0.5);
-        ctx.closePath();
-        ctx.fill();
-      } else {
-        // Diamond
-        ctx.beginPath();
-        ctx.moveTo(0, -l.size * 0.9);
-        ctx.lineTo(l.size * 0.5, 0);
-        ctx.lineTo(0, l.size * 0.7);
-        ctx.lineTo(-l.size * 0.5, 0);
-        ctx.closePath();
-        ctx.fill();
-      }
-
-      ctx.restore();
-    }
-
-    // Connecting lines between close particles
-    function drawConnections() {
-      for (let i = 0; i < leaves.length; i++) {
-        for (let j = i + 1; j < leaves.length; j++) {
-          const dx = leaves[i].x - leaves[j].x;
-          const dy = leaves[i].y - leaves[j].y;
-          const d  = Math.sqrt(dx*dx + dy*dy);
-          if (d < 80) {
-            ctx.beginPath();
-            ctx.moveTo(leaves[i].x, leaves[i].y);
-            ctx.lineTo(leaves[j].x, leaves[j].y);
-            ctx.strokeStyle = `rgba(61,102,68,${(1 - d/80) * 0.07})`;
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
-          }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    /* connections */
+    for(var i=0;i<pts.length;i++){
+      for(var j=i+1;j<pts.length;j++){
+        var dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y;
+        var d=Math.sqrt(dx*dx+dy*dy);
+        if(d<75){
+          ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);
+          ctx.strokeStyle='rgba(61,102,68,'+(1-d/75)*.06+')';ctx.lineWidth=.5;ctx.stroke();
         }
       }
     }
-
-    function animate() {
-      ctx.clearRect(0, 0, W, H);
-      drawConnections();
-
-      leaves.forEach(l => {
-        l.sway += l.swayS;
-        l.x += l.vx + Math.sin(l.sway) * l.swayA;
-        l.y += l.vy;
-        l.rot += l.rotV;
-
-        // Mouse repulsion
-        const dx = l.x - mouse.x, dy = l.y - mouse.y;
-        const dist = Math.sqrt(dx*dx + dy*dy);
-        if (dist < 100) {
-          const f = (100 - dist) / 100 * 0.8;
-          l.x += (dx / dist) * f;
-          l.y += (dy / dist) * f;
-        }
-
-        if (l.y > H + 20) {
-          l.y = -20;
-          l.x = Math.random() * W;
-        }
-        if (l.x < -20) l.x = W + 20;
-        if (l.x > W + 20) l.x = -20;
-
-        drawLeaf(l);
-      });
-
-      requestAnimationFrame(animate);
-    }
-    animate();
-  }
-
-  /* ──────────────────────────────────────────
-     4. HERO LETTER SCRAMBLE + SPLIT ANIMATION
-  ────────────────────────────────────────── */
-  const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%';
-
-  function scrambleLetter(el, finalChar, delay, duration) {
-    let start = null;
-    el.style.animationDelay = delay + 'ms';
-    el.classList.add('hero-letter');
-
-    const interval = setInterval(() => {
-      el.textContent = CHARS[Math.floor(Math.random() * CHARS.length)];
-    }, 60);
-
-    setTimeout(() => {
-      clearInterval(interval);
-      el.textContent = finalChar;
-    }, delay + duration);
-  }
-
-  function splitWord(containerId, word, baseDelay) {
-    const el = document.getElementById(containerId);
-    if (!el) return;
-    el.innerHTML = '';
-    [...word].forEach((ch, i) => {
-      if (ch === ' ') {
-        el.appendChild(document.createTextNode('\u00A0'));
-        return;
-      }
-      const span = document.createElement('span');
-      span.textContent = ch;
-      span.style.animationDelay = (baseDelay + i * 60) + 'ms';
-      span.classList.add('hero-letter');
-      el.appendChild(span);
-      scrambleLetter(span, ch, baseDelay + i * 60, 400);
+    /* leaves */
+    pts.forEach(function(p){
+      p.sw+=p.ss;p.x+=p.vx+Math.sin(p.sw)*p.sa;p.y+=p.vy;p.rot+=p.rv;
+      var dx=p.x-mouse.x,dy=p.y-mouse.y,d=Math.sqrt(dx*dx+dy*dy);
+      if(d<90){var f=(90-d)/90*.7;p.x+=dx/d*f;p.y+=dy/d*f;}
+      if(p.y>H+15){p.y=-15;p.x=Math.random()*W;}
+      if(p.x<-15)p.x=W+15;if(p.x>W+15)p.x=-15;
+      ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot);ctx.globalAlpha=p.al;
+      ctx.fillStyle=p.col+p.al+')';
+      ctx.beginPath();
+      if(p.sh===0){ctx.ellipse(0,0,p.sz,p.sz*.45,0,0,Math.PI*2);}
+      else if(p.sh===1){ctx.moveTo(0,-p.sz);ctx.lineTo(p.sz*.6,p.sz*.5);ctx.lineTo(-p.sz*.6,p.sz*.5);ctx.closePath();}
+      else{ctx.moveTo(0,-p.sz*.9);ctx.lineTo(p.sz*.5,0);ctx.lineTo(0,p.sz*.65);ctx.lineTo(-p.sz*.5,0);ctx.closePath();}
+      ctx.fill();ctx.restore();
     });
+    requestAnimationFrame(draw);
   }
+  draw();
+}
 
-  splitWord('word-sardor',    'Sardor',    200);
-  splitWord('word-murtazaev', 'Murtazaev', 550);
-
-  /* ──────────────────────────────────────────
-     5. MAGNETIC BUTTONS / ELEMENTS
-  ────────────────────────────────────────── */
-  document.querySelectorAll('.magnetic').forEach(el => {
-    const strength = parseFloat(el.dataset.strength) || 20;
-
-    el.addEventListener('mousemove', e => {
-      const rect = el.getBoundingClientRect();
-      const cx = rect.left + rect.width / 2;
-      const cy = rect.top  + rect.height / 2;
-      const dx = e.clientX - cx;
-      const dy = e.clientY - cy;
-      el.style.transform = `translate(${dx * strength / rect.width}px, ${dy * strength / rect.height}px)`;
-    });
-
-    el.addEventListener('mouseleave', () => {
-      el.style.transform = '';
-    });
+/* ── HERO NAME SCRAMBLE ── */
+var CHARS='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789#@$%&';
+function scrambleEl(el,final,delay){
+  var iv;
+  setTimeout(function(){
+    el.classList.add('hl','animate');
+    var count=0,max=12;
+    iv=setInterval(function(){
+      el.textContent=CHARS[Math.floor(Math.random()*CHARS.length)];
+      count++;if(count>=max){clearInterval(iv);el.textContent=final;}
+    },55);
+  },delay);
+}
+function buildWord(id,word,base){
+  var el=document.getElementById(id);
+  if(!el)return;
+  var spans=[];
+  for(var i=0;i<word.length;i++){
+    var s=document.createElement('span');
+    s.textContent=word[i];
+    s.style.display='inline-block';
+    spans.push(s);
+    el.appendChild(s);
+  }
+  spans.forEach(function(s,i){
+    scrambleEl(s,word[i],base+i*65);
   });
+}
+/* Replace existing text nodes with letter spans */
+var hn=document.getElementById('hero-name');
+if(hn){
+  var hw1=hn.querySelector('.hw1');
+  var hw2=hn.querySelector('.hw2');
+  if(hw1){hw1.innerHTML='';buildWord('x1','Sardor',300);}
+  if(hw2){hw2.innerHTML='';buildWord('x2','Murtazaev',650);}
+  if(hw1){hw1.id='x1';}
+  if(hw2){hw2.id='x2';}
+}
 
-  /* ──────────────────────────────────────────
-     6. 3D CARD TILT
-  ────────────────────────────────────────── */
-  document.querySelectorAll('.tilt-card').forEach(card => {
-    const MAXDEG = 6;
-
-    card.addEventListener('mousemove', e => {
-      const rect = card.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width  - 0.5;
-      const y = (e.clientY - rect.top)  / rect.height - 0.5;
-      card.style.transform = `perspective(700px) rotateY(${x * MAXDEG * 2}deg) rotateX(${-y * MAXDEG}deg) scale3d(1.015,1.015,1.015)`;
-      card.style.transition = 'transform .05s linear';
-    });
-
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = '';
-      card.style.transition = 'transform .45s cubic-bezier(.16,1,.3,1)';
-    });
+/* ── 3D TILT ── */
+document.querySelectorAll('.tc').forEach(function(card){
+  var MAX=5;
+  card.addEventListener('mousemove',function(e){
+    var r=card.getBoundingClientRect();
+    var x=(e.clientX-r.left)/r.width-.5;
+    var y=(e.clientY-r.top)/r.height-.5;
+    card.style.transform='perspective(700px) rotateY('+(x*MAX*2)+'deg) rotateX('+(-y*MAX)+'deg) scale3d(1.012,1.012,1.012)';
+    card.style.transition='transform .06s linear';
   });
-
-  /* ──────────────────────────────────────────
-     7. NAV: SCROLL STATE + PROGRESS BAR
-  ────────────────────────────────────────── */
-  const nav    = document.getElementById('nav');
-  const navBar = document.getElementById('nav-bar');
-
-  window.addEventListener('scroll', () => {
-    const sy  = window.scrollY;
-    const max = document.documentElement.scrollHeight - window.innerHeight;
-    if (navBar) navBar.style.width = (max > 0 ? (sy / max) * 100 : 0) + '%';
-    if (nav)    nav.classList.toggle('stuck', sy > 60);
-  }, { passive: true });
-
-  /* ──────────────────────────────────────────
-     8. SCROLL REVEAL
-  ────────────────────────────────────────── */
-  const srEls = document.querySelectorAll('.sr-reveal');
-
-  const srObs = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      const parent = entry.target.parentElement;
-      const siblings = parent ? [...parent.querySelectorAll('.sr-reveal')] : [];
-      const idx   = siblings.indexOf(entry.target);
-      const delay = idx * 80;
-      setTimeout(() => entry.target.classList.add('in'), delay);
-      srObs.unobserve(entry.target);
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-  srEls.forEach(el => srObs.observe(el));
-
-  /* ──────────────────────────────────────────
-     9. ANIMATED STAT COUNTERS
-  ────────────────────────────────────────── */
-  function easeOutQuart(t) { return 1 - Math.pow(1 - t, 4); }
-
-  function runCounter(el) {
-    const target = parseInt(el.dataset.target, 10);
-    // Special: 428 → display as 4.28
-    const isDecimal = target === 428;
-    const duration  = 1800;
-    const start     = performance.now();
-
-    (function tick(now) {
-      const p = Math.min((now - start) / duration, 1);
-      const v = Math.round(easeOutQuart(p) * target);
-      el.textContent = isDecimal ? (v / 100).toFixed(2) : v;
-      if (p < 1) requestAnimationFrame(tick);
-    })(start);
-  }
-
-  const ctrObs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      runCounter(e.target);
-      ctrObs.unobserve(e.target);
-    });
-  }, { threshold: 0.5 });
-
-  document.querySelectorAll('.stat-n[data-target]').forEach(el => ctrObs.observe(el));
-
-  /* ──────────────────────────────────────────
-     10. SMOOTH SCROLL
-  ────────────────────────────────────────── */
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const t = document.querySelector(a.getAttribute('href'));
-      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-    });
+  card.addEventListener('mouseleave',function(){
+    card.style.transform='';
+    card.style.transition='transform .4s cubic-bezier(.16,1,.3,1)';
   });
+});
+
+/* ── MAGNETIC ── */
+document.querySelectorAll('.mag,.btn-p,.btn-g,.clink').forEach(function(el){
+  var str=parseFloat(el.dataset.s)||22;
+  el.addEventListener('mousemove',function(e){
+    var r=el.getBoundingClientRect();
+    var x=e.clientX-r.left-r.width/2;
+    var y=e.clientY-r.top-r.height/2;
+    el.style.transform='translate('+(x*str/r.width)+'px,'+(y*str/r.height)+'px)';
+  });
+  el.addEventListener('mouseleave',function(){el.style.transform='';});
+});
+
+/* ── NAV SCROLL + PROGRESS ── */
+var nav=document.getElementById('nav');
+var prog=document.getElementById('nav-prog');
+window.addEventListener('scroll',function(){
+  var sy=window.scrollY;
+  var max=document.documentElement.scrollHeight-window.innerHeight;
+  if(prog)prog.style.width=(max>0?(sy/max)*100:0)+'%';
+  if(nav)nav.classList.toggle('stuck',sy>60);
+},{passive:true});
+
+/* ── SCROLL REVEAL (stagger siblings) ── */
+var srs=document.querySelectorAll('.sr');
+var srObs=new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(!entry.isIntersecting)return;
+    var parent=entry.target.parentElement;
+    var sibs=parent?Array.from(parent.querySelectorAll('.sr')):[];
+    var idx=sibs.indexOf(entry.target);
+    var delay=idx*75;
+    setTimeout(function(){entry.target.classList.add('in');},delay);
+    srObs.unobserve(entry.target);
+  });
+},{threshold:.1,rootMargin:'0px 0px -35px 0px'});
+srs.forEach(function(el){srObs.observe(el);});
+
+/* ── STAT COUNTERS ── */
+function easeOut(t){return 1-Math.pow(1-t,4);}
+function counter(el){
+  var t=parseInt(el.dataset.t,10);
+  var dec=t===428;
+  var dur=1800,st=performance.now();
+  (function tick(now){
+    var p=Math.min((now-st)/dur,1);
+    var v=Math.round(easeOut(p)*t);
+    el.textContent=dec?(v/100).toFixed(2):v;
+    if(p<1)requestAnimationFrame(tick);
+  })(st);
+}
+var cobs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(!e.isIntersecting)return;
+    counter(e.target);cobs.unobserve(e.target);
+  });
+},{threshold:.5});
+document.querySelectorAll('.sn[data-t]').forEach(function(el){cobs.observe(el);});
+
+/* ── SMOOTH SCROLL ── */
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
 
 })();
