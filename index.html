@@ -1,88 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sardor Murtazaev | Finance & AI | Credit Risk | Sejong University</title>
-  <meta name="description" content="Sardor Murtazaev — MBA candidate in Finance & AI at Sejong University, South Korea. Focused on credit risk analysis, banking analytics, and algorithmic fairness in AI-based credit scoring. Originally from Uzbekistan." />
-  <meta name="keywords" content="Sardor Murtazaev, Murtazaev Sardor, Муртазаев Сардор, MBA Finance AI, Sejong University, Credit Risk, Banking Analytics, AI Credit Scoring, Algorithmic Fairness, Power BI, Uzbekistan Banking" />
-  <meta name="author" content="Sardor Murtazaev" />
-  <link rel="canonical" href="https://sardormurtazaev.github.io/" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Sardor Murtazaev | Finance & AI" />
-  <meta property="og:description" content="MBA candidate in Finance & AI at Sejong University. Credit Risk · Banking Analytics · Algorithmic Fairness." />
-  <meta property="og:url" content="https://sardormurtazaev.github.io/" />
-
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Person","name":"Sardor Murtazaev","alternateName":["Murtazaev Sardor","Murtazaev Sardor Orzuyevich","Муртазаев Сардор","Муртазаев Сардор Орзуевич"],"url":"https://sardormurtazaev.github.io","description":"MBA candidate in Finance & AI at Sejong University (South Korea). Focused on credit risk, banking analytics, and algorithmic fairness in AI-based credit scoring.","jobTitle":"MBA Candidate in Finance & AI","nationality":{"@type":"Country","name":"Uzbekistan"},"knowsLanguage":["uz","ru","en","ko"],"knowsAbout":["Credit Risk Analysis","AI-Based Credit Scoring","Algorithmic Fairness","Banking Analytics","Financial Risk Management","Machine Learning in Finance","Power BI","Portfolio Optimization","Trade Finance","Cashless Payment Systems"],"alumniOf":[{"@type":"CollegeOrUniversity","name":"Sejong University","address":{"@type":"PostalAddress","addressLocality":"Seoul","addressCountry":"KR"}},{"@type":"CollegeOrUniversity","name":"Tashkent State University of Economics","address":{"@type":"PostalAddress","addressLocality":"Tashkent","addressCountry":"UZ"}}],"sameAs":["https://linkedin.com/in/sardormurtazaev","https://github.com/sardormurtazaev"]}
-  </script>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&family=Space+Mono&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="Sardor Murtazaev — MBA candidate in Finance & AI at Sejong University, South Korea. Credit risk, banking analytics, algorithmic fairness."/>
+  <meta name="keywords" content="Sardor Murtazaev, Murtazaev Sardor, Муртазаев Сардор, MBA Finance AI, Sejong University, Credit Risk, Banking Analytics, Algorithmic Fairness"/>
+  <meta name="author" content="Sardor Murtazaev"/>
+  <link rel="canonical" href="https://sardormurtazaev.github.io/"/>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Sardor Murtazaev","alternateName":["Murtazaev Sardor","Murtazaev Sardor Orzuyevich","Муртазаев Сардор"],"url":"https://sardormurtazaev.github.io","jobTitle":"MBA Candidate in Finance & AI","nationality":{"@type":"Country","name":"Uzbekistan"},"sameAs":["https://linkedin.com/in/sadomu","https://github.com/sardormurtazaev"]}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500&family=Courier+Prime:ital@0;1&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
-  <div class="cursor" id="cursor"></div>
+  <!-- NOISE OVERLAY -->
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <!-- CUSTOM CURSOR -->
+  <div class="cursor-ring" id="cursor-ring"></div>
   <div class="cursor-dot" id="cursor-dot"></div>
+
+  <!-- RIPPLE CONTAINER -->
+  <div class="ripple-container" id="ripple-container" aria-hidden="true"></div>
 
   <!-- NAV -->
   <nav class="nav" id="nav">
-    <span class="nav-name">SM</span>
+    <a class="nav-logo" href="#hero">
+      <span class="nav-logo-text">SM</span>
+      <span class="nav-logo-sub">Finance & AI</span>
+    </a>
     <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#stats">Stats</a></li>
-      <li><a href="#focus">Focus</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#timeline">Experience</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#about" data-text="About">About</a></li>
+      <li><a href="#focus" data-text="Focus">Focus</a></li>
+      <li><a href="#projects" data-text="Projects">Projects</a></li>
+      <li><a href="#timeline" data-text="Experience">Experience</a></li>
+      <li><a href="#contact" data-text="Contact">Contact</a></li>
     </ul>
-    <div class="nav-progress" id="nav-progress"></div>
+    <div class="nav-bar" id="nav-bar"></div>
   </nav>
 
-  <!-- HERO -->
+  <!-- ══════════ HERO ══════════ -->
   <section class="hero" id="hero">
-    <canvas id="particles-canvas"></canvas>
-    <div class="hero-orb hero-orb-1"></div>
-    <div class="hero-orb hero-orb-2"></div>
-    <div class="hero-orb hero-orb-3"></div>
+    <canvas id="forest-canvas"></canvas>
 
-    <div class="hero-inner">
-      <p class="hero-label reveal-up" style="--d:0s">
-        <span class="location-dot"></span>
+    <!-- Morphing blob shapes -->
+    <div class="blob blob-1" aria-hidden="true"></div>
+    <div class="blob blob-2" aria-hidden="true"></div>
+    <div class="blob blob-3" aria-hidden="true"></div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow" id="hero-eyebrow">
+        <span class="eyebrow-dot"></span>
         Seoul, South Korea &nbsp;·&nbsp; 🇺🇿 Uzbekistan
       </p>
-      <h1 class="hero-name">
-        <span class="hero-name-line reveal-up" style="--d:.1s">Sardor</span>
-        <span class="hero-name-line reveal-up" style="--d:.2s">Murtazaev</span>
+
+      <!-- Scramble + split-letter name -->
+      <h1 class="hero-title" id="hero-title" aria-label="Sardor Murtazaev">
+        <span class="hero-word" id="word-sardor"></span>
+        <span class="hero-word hero-word-2" id="word-murtazaev"></span>
       </h1>
-      <div class="hero-tags reveal-up" style="--d:.3s">
-        <span class="tag">MBA Finance & AI</span>
-        <span class="tag-sep">·</span>
-        <span class="tag">Sejong University</span>
-        <span class="tag-sep">·</span>
-        <span class="tag">Seoul</span>
+
+      <div class="hero-meta">
+        <span class="hero-tag magnetic" data-strength="20">MBA Finance & AI</span>
+        <span class="hero-sep">—</span>
+        <span class="hero-tag magnetic" data-strength="15">Sejong University</span>
+        <span class="hero-sep">—</span>
+        <span class="hero-tag magnetic" data-strength="20">Seoul</span>
       </div>
-      <p class="hero-sub reveal-up" style="--d:.4s">
-        Building skills at the intersection of banking,<br>
-        data analytics, and machine learning —<br>
-        with a focus on credit risk and responsible AI.
+
+      <p class="hero-desc">
+        Building skills at the intersection of banking, data analytics,<br>
+        and machine learning — focused on credit risk and responsible AI.
       </p>
-      <div class="hero-cta reveal-up" style="--d:.5s">
-        <a href="#projects" class="btn btn-primary">View Projects</a>
-        <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+
+      <div class="hero-actions">
+        <a href="#projects" class="btn-primary magnetic" data-strength="30">
+          <span class="btn-text">View Projects</span>
+          <span class="btn-bg"></span>
+        </a>
+        <a href="#contact" class="btn-ghost magnetic" data-strength="25">
+          <span>Get in Touch</span>
+        </a>
       </div>
-      <div class="hero-scroll-hint reveal-up" style="--d:.7s">
-        <span>scroll</span>
-        <div class="scroll-line"></div>
+
+      <div class="hero-scroll">
+        <div class="scroll-track"><div class="scroll-thumb"></div></div>
+        <span>scroll to explore</span>
       </div>
     </div>
   </section>
 
   <!-- MARQUEE -->
-  <div class="marquee-band" aria-hidden="true">
-    <div class="marquee-track">
+  <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-inner">
       <span>Credit Risk</span><span class="mx">✦</span>
       <span>AI Credit Scoring</span><span class="mx">✦</span>
       <span>Algorithmic Fairness</span><span class="mx">✦</span>
@@ -106,48 +119,34 @@
     </div>
   </div>
 
-  <!-- ABOUT -->
+  <!-- ══════════ ABOUT ══════════ -->
   <section class="section" id="about">
     <div class="container">
-      <div class="about-grid">
-        <div class="about-left">
-          <span class="section-label sr-reveal">/ About</span>
-          <h2 class="section-heading sr-reveal">Finance background.<br/>Data-driven thinking.</h2>
-          <p class="sr-reveal">
-            I'm an MBA candidate in Finance &amp; AI at Sejong University, with a B.Sc. in
-            Banking and Bank Audit from Tashkent State University of Economics. Before
-            graduate school, I completed internships at three Uzbek commercial banks —
-            working across credit documentation, trade finance, and credit monitoring.
-          </p>
-          <p class="sr-reveal">
-            In my current studies, I'm developing skills in financial modeling, machine
-            learning in finance, and quantitative risk analysis. My research explores
-            how AI-based credit scoring systems can produce discriminatory outcomes and
-            what technical and regulatory responses are emerging.
-          </p>
-          <p class="sr-reveal">
-            I'm actively building a project portfolio in Python and Power BI, and seeking
-            internship or entry-level opportunities in finance analysis, credit risk,
-            or data analytics.
-          </p>
+      <div class="about-layout">
+        <div class="about-text">
+          <span class="chip sr-reveal">/ About</span>
+          <h2 class="sec-heading sr-reveal">Finance background.<br/>Data-driven thinking.</h2>
+          <p class="sr-reveal">I'm an MBA candidate in Finance &amp; AI at Sejong University (GPA 4.28/4.5), with a B.Sc. in Banking &amp; Audit from Tashkent State University of Economics. Before graduate school, I completed internships at four Uzbek commercial banks — working across legal documentation, foreign exchange, credit monitoring, and subsequent control.</p>
+          <p class="sr-reveal">My research explores how AI-based credit scoring systems can produce discriminatory outcomes and what technical and regulatory responses are emerging. I'm building a project portfolio in Python and Power BI, and seeking opportunities in finance analysis, credit risk, or data analytics.</p>
         </div>
-        <div class="about-right">
-          <div class="about-card sr-reveal">
-            <span class="about-card-label">Education</span>
-            <p>MBA Finance &amp; AI<br/><em>Sejong University, Seoul</em></p>
-            <p>B.Sc. Banking &amp; Bank Audit<br/><em>TSUE, Tashkent</em></p>
+        <div class="about-cards">
+          <div class="info-card tilt-card sr-reveal">
+            <div class="info-card-label">Education</div>
+            <p>MBA Finance &amp; AI · <strong>4.28/4.5</strong><br/><small>Sejong University, Seoul · 2024–2026</small></p>
+            <p>B.Sc. Banking &amp; Audit · <strong>4.32/5.0</strong><br/><small>TSUE, Tashkent · 2020–2024</small></p>
           </div>
-          <div class="about-card sr-reveal">
-            <span class="about-card-label">Languages</span>
-            <div class="lang-grid">
-              <span class="lang-pill">Uzbek <em>native</em></span>
-              <span class="lang-pill">Russian <em>fluent</em></span>
-              <span class="lang-pill">English <em>professional</em></span>
-              <span class="lang-pill">Korean <em>basic</em></span>
+          <div class="info-card tilt-card sr-reveal">
+            <div class="info-card-label">Languages</div>
+            <div class="lang-wrap">
+              <span class="lpill">Uzbek <em>native</em></span>
+              <span class="lpill">Russian <em>native</em></span>
+              <span class="lpill">English <em>fluent</em></span>
+              <span class="lpill">Korean <em>basic</em></span>
+              <span class="lpill">Tajik <em>basic</em></span>
             </div>
           </div>
-          <div class="about-card open-to sr-reveal">
-            <span class="about-card-label">Open to</span>
+          <div class="info-card info-card-accent tilt-card sr-reveal">
+            <div class="info-card-label">Open to</div>
             <p>Internships &amp; entry-level roles<br/>Finance · Risk · Analytics</p>
           </div>
         </div>
@@ -155,228 +154,225 @@
     </div>
   </section>
 
-  <!-- STATS STRIP (like Artel numbers section) -->
-  <section class="stats-section" id="stats">
-    <div class="stats-inner">
-      <div class="stat-item sr-reveal">
-        <span class="stat-num" data-target="3">0</span>
-        <span class="stat-unit"></span>
-        <span class="stat-label">bank internships<br/>in Uzbekistan</span>
+  <!-- ══════════ STATS ══════════ -->
+  <section class="stats-band" id="stats">
+    <div class="container stats-row">
+      <div class="stat sr-reveal">
+        <span class="stat-n" data-target="4">0</span>
+        <span class="stat-l">Banking internships<br/>in Uzbekistan</span>
       </div>
-      <div class="stat-divider"></div>
-      <div class="stat-item sr-reveal">
-        <span class="stat-num" data-target="4">0</span>
-        <span class="stat-unit"></span>
-        <span class="stat-label">languages<br/>spoken</span>
+      <div class="stat-line"></div>
+      <div class="stat sr-reveal">
+        <span class="stat-n" data-target="5">0</span>
+        <span class="stat-l">Languages<br/>spoken</span>
       </div>
-      <div class="stat-divider"></div>
-      <div class="stat-item sr-reveal">
-        <span class="stat-num" data-target="2">0</span>
-        <span class="stat-unit"></span>
-        <span class="stat-label">countries<br/>studied & worked</span>
+      <div class="stat-line"></div>
+      <div class="stat sr-reveal">
+        <span class="stat-n" data-target="428">0</span>
+        <span class="stat-u">/4.5</span>
+        <span class="stat-l">Current<br/>GPA</span>
       </div>
-      <div class="stat-divider"></div>
-      <div class="stat-item sr-reveal">
-        <span class="stat-num" data-target="3">0</span>
-        <span class="stat-unit"></span>
-        <span class="stat-label">active GitHub<br/>projects</span>
+      <div class="stat-line"></div>
+      <div class="stat sr-reveal">
+        <span class="stat-n" data-target="3">0</span>
+        <span class="stat-l">Active GitHub<br/>projects</span>
       </div>
-      <div class="stat-divider"></div>
-      <div class="stat-item sr-reveal">
-        <span class="stat-num" data-target="1">0</span>
-        <span class="stat-unit"></span>
-        <span class="stat-label">academic<br/>publication</span>
+      <div class="stat-line"></div>
+      <div class="stat sr-reveal">
+        <span class="stat-n" data-target="2">0</span>
+        <span class="stat-l">Countries studied<br/>&amp; worked</span>
       </div>
     </div>
   </section>
 
-  <!-- FOCUS -->
-  <section class="section section-dark" id="focus">
+  <!-- ══════════ FOCUS ══════════ -->
+  <section class="section sec-dark" id="focus">
     <div class="container">
-      <span class="section-label sr-reveal">/ Focus Areas</span>
-      <h2 class="section-heading centered sr-reveal">What I'm working on</h2>
+      <span class="chip sr-reveal">/ Focus Areas</span>
+      <h2 class="sec-heading centered sr-reveal">What I'm working on</h2>
       <div class="focus-grid">
-        <div class="focus-card sr-reveal" style="--ci:0">
-          <div class="focus-card-glow"></div>
-          <span class="focus-icon">⚖</span>
+        <div class="focus-card tilt-card sr-reveal">
+          <div class="fc-icon">⚖</div>
+          <div class="fc-glow"></div>
           <h3>Algorithmic Fairness</h3>
-          <p>Researching how ML credit scoring models can encode bias, and what fairness metrics and regulatory frameworks apply.</p>
-          <div class="focus-line"></div>
+          <p>Researching how ML credit scoring models encode bias, and what fairness metrics and regulatory frameworks apply.</p>
+          <div class="fc-bar"></div>
         </div>
-        <div class="focus-card sr-reveal" style="--ci:1">
-          <div class="focus-card-glow"></div>
-          <span class="focus-icon">📊</span>
+        <div class="focus-card tilt-card sr-reveal">
+          <div class="fc-icon">📊</div>
+          <div class="fc-glow"></div>
           <h3>Credit Risk Analytics</h3>
-          <p>Building dashboards and models for portfolio monitoring, NPL analysis, and risk segmentation using Power BI and Python.</p>
-          <div class="focus-line"></div>
+          <p>Building dashboards for portfolio monitoring, NPL analysis, and risk segmentation using Power BI and Python.</p>
+          <div class="fc-bar"></div>
         </div>
-        <div class="focus-card sr-reveal" style="--ci:2">
-          <div class="focus-card-glow"></div>
-          <span class="focus-icon">🏦</span>
+        <div class="focus-card tilt-card sr-reveal">
+          <div class="fc-icon">🏦</div>
+          <div class="fc-glow"></div>
           <h3>Banking Operations</h3>
-          <p>Practical grounding in credit documentation, trade finance (letters of credit), and loan monitoring from banking internships.</p>
-          <div class="focus-line"></div>
+          <p>Practical grounding across legal documentation, foreign exchange, credit monitoring, and subsequent control.</p>
+          <div class="fc-bar"></div>
         </div>
-        <div class="focus-card sr-reveal" style="--ci:3">
-          <div class="focus-card-glow"></div>
-          <span class="focus-icon">📈</span>
+        <div class="focus-card tilt-card sr-reveal">
+          <div class="fc-icon">📈</div>
+          <div class="fc-glow"></div>
           <h3>Quantitative Finance</h3>
-          <p>Developing skills in portfolio optimization, log-return analysis, covariance modeling, and the Sharpe ratio.</p>
-          <div class="focus-line"></div>
+          <p>Portfolio optimization, log-return analysis, covariance modeling, and the Sharpe ratio through hands-on coursework.</p>
+          <div class="fc-bar"></div>
         </div>
-        <div class="focus-card sr-reveal" style="--ci:4">
-          <div class="focus-card-glow"></div>
-          <span class="focus-icon">💳</span>
+        <div class="focus-card tilt-card sr-reveal">
+          <div class="fc-icon">💳</div>
+          <div class="fc-glow"></div>
           <h3>Payment Systems</h3>
-          <p>Analyzing cashless payment adoption in Uzbekistan, connecting policy, infrastructure, and financial inclusion data.</p>
-          <div class="focus-line"></div>
+          <p>Analyzing cashless payment adoption in Uzbekistan — policy, infrastructure, and financial inclusion data.</p>
+          <div class="fc-bar"></div>
         </div>
-        <div class="focus-card sr-reveal" style="--ci:5">
-          <div class="focus-card-glow"></div>
-          <span class="focus-icon">🤖</span>
+        <div class="focus-card tilt-card sr-reveal">
+          <div class="fc-icon">🤖</div>
+          <div class="fc-glow"></div>
           <h3>ML in Finance</h3>
-          <p>Applying classification models to credit risk problems and exploring bias mitigation using Scikit-learn and Fairlearn.</p>
-          <div class="focus-line"></div>
+          <p>Classification models for credit risk and bias mitigation techniques using Scikit-learn and Fairlearn.</p>
+          <div class="fc-bar"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PROJECTS -->
+  <!-- ══════════ PROJECTS ══════════ -->
   <section class="section" id="projects">
     <div class="container">
-      <span class="section-label sr-reveal">/ Projects</span>
-      <h2 class="section-heading sr-reveal">Work in progress</h2>
-      <p class="section-intro sr-reveal">Active projects developed as part of graduate studies and independent exploration. All code is open on GitHub.</p>
-      <div class="projects-list">
-        <div class="project-card sr-reveal">
-          <div class="project-number">01</div>
-          <div class="project-body">
-            <div class="project-header">
-              <span class="project-tag">Python · Scikit-learn · Fairlearn</span>
-              <span class="project-status">In Progress</span>
+      <span class="chip sr-reveal">/ Projects</span>
+      <h2 class="sec-heading sr-reveal">Work in progress</h2>
+      <p class="sec-sub sr-reveal">Active projects from graduate studies and independent exploration. All code is open on GitHub.</p>
+
+      <div class="proj-list">
+
+        <div class="proj-card tilt-card sr-reveal">
+          <div class="proj-num">01</div>
+          <div class="proj-body">
+            <div class="proj-top">
+              <span class="proj-stack">Python · Scikit-learn · Fairlearn</span>
+              <span class="proj-badge">In Progress</span>
             </div>
             <h3>AI Credit Scoring Fairness</h3>
-            <p>Analyzing how machine learning models used in credit decisions can produce biased outcomes for certain demographic groups — even when sensitive attributes are excluded. Applies fairness metrics and compares mitigation strategies.</p>
-            <a href="https://github.com/sardormurtazaev/ai-credit-scoring-fairness" class="project-link" target="_blank" rel="noopener">View on GitHub →</a>
+            <p>Analyzing how machine learning models in credit decisions can produce biased outcomes — even when sensitive attributes are excluded. Applies demographic parity, equalized odds, and compares mitigation strategies.</p>
+            <a href="https://github.com/sardormurtazaev/ai-credit-scoring-fairness" class="proj-link" target="_blank" rel="noopener">GitHub →</a>
           </div>
-          <div class="project-card-glow"></div>
+          <div class="proj-glow"></div>
         </div>
-        <div class="project-card sr-reveal">
-          <div class="project-number">02</div>
-          <div class="project-body">
-            <div class="project-header">
-              <span class="project-tag">Power BI · Excel · DAX</span>
-              <span class="project-status">In Progress</span>
+
+        <div class="proj-card tilt-card sr-reveal">
+          <div class="proj-num">02</div>
+          <div class="proj-body">
+            <div class="proj-top">
+              <span class="proj-stack">Power BI · Excel · DAX</span>
+              <span class="proj-badge">In Progress</span>
             </div>
             <h3>Banking Risk Dashboard</h3>
-            <p>An interactive Power BI dashboard visualizing key credit risk metrics across a simulated loan portfolio — including NPL ratios, portfolio-at-risk by segment, and early warning indicators.</p>
-            <a href="https://github.com/sardormurtazaev/banking-risk-dashboard" class="project-link" target="_blank" rel="noopener">View on GitHub →</a>
+            <p>Interactive Power BI dashboard visualizing credit risk metrics across a simulated loan portfolio — NPL ratios, portfolio-at-risk by segment, and early warning indicators. Draws on Asaka Bank internship experience.</p>
+            <a href="https://github.com/sardormurtazaev/banking-risk-dashboard" class="proj-link" target="_blank" rel="noopener">GitHub →</a>
           </div>
-          <div class="project-card-glow"></div>
+          <div class="proj-glow"></div>
         </div>
-        <div class="project-card sr-reveal">
-          <div class="project-number">03</div>
-          <div class="project-body">
-            <div class="project-header">
-              <span class="project-tag">Python · Pandas · Matplotlib</span>
-              <span class="project-status">In Progress</span>
+
+        <div class="proj-card tilt-card sr-reveal">
+          <div class="proj-num">03</div>
+          <div class="proj-body">
+            <div class="proj-top">
+              <span class="proj-stack">Python · Pandas · Matplotlib</span>
+              <span class="proj-badge">In Progress</span>
             </div>
             <h3>Uzbekistan Cashless Payments Analysis</h3>
-            <p>A data-driven analysis of cashless payment system development in Uzbekistan (2018–present), using public data from the Central Bank of Uzbekistan and World Bank indicators.</p>
-            <a href="https://github.com/sardormurtazaev/uzbekistan-cashless-payments-analysis" class="project-link" target="_blank" rel="noopener">View on GitHub →</a>
+            <p>Data-driven analysis of cashless payment development in Uzbekistan (2018–present), using Central Bank of Uzbekistan and World Bank public data. Extends themes from undergraduate publication.</p>
+            <a href="https://github.com/sardormurtazaev/uzbekistan-cashless-payments-analysis" class="proj-link" target="_blank" rel="noopener">GitHub →</a>
           </div>
-          <div class="project-card-glow"></div>
+          <div class="proj-glow"></div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- TIMELINE (like Artel history section) -->
-  <section class="section section-tinted" id="timeline">
+  <!-- ══════════ TIMELINE ══════════ -->
+  <section class="section sec-dark" id="timeline">
     <div class="container">
-      <span class="section-label sr-reveal">/ Experience</span>
-      <h2 class="section-heading sr-reveal">Background & Education</h2>
+      <span class="chip sr-reveal">/ Experience</span>
+      <h2 class="sec-heading sr-reveal">Background & Education</h2>
+      <div class="tl">
 
-      <div class="timeline">
-
-        <div class="tl-item sr-reveal">
-          <div class="tl-year-col">
-            <span class="tl-year">2024</span>
-            <div class="tl-year-line"></div>
-          </div>
-          <div class="tl-dot"></div>
-          <div class="tl-content">
+        <div class="tl-row sr-reveal">
+          <div class="tl-yr">2024–2026</div>
+          <div class="tl-spine"><div class="tl-node"></div><div class="tl-thread"></div></div>
+          <div class="tl-box tilt-card">
             <span class="tl-org">Sejong University</span>
-            <span class="tl-role">MBA in Finance & AI · Seoul, South Korea</span>
-            <p>Graduate studies in financial modeling, machine learning in finance, supply chain management, and financial statement analysis. Research focus: algorithmic discrimination in AI-based credit scoring systems.</p>
-            <div class="tl-tags">
-              <span>Credit Risk</span><span>ML in Finance</span><span>Quantitative Finance</span><span>Power BI</span>
-            </div>
+            <span class="tl-role">MBA in Finance & AI · Seoul · GPA 4.28/4.5</span>
+            <p>AI Applications in Finance, Machine Learning, Financial Institutions & Markets, Derivatives, Data Analysis for Business, Corporate Finance & Strategy. Research: algorithmic discrimination in AI-based credit scoring.</p>
+            <div class="tl-chips"><span>ML in Finance</span><span>Credit Risk</span><span>Derivatives</span><span>Data Analysis</span></div>
           </div>
         </div>
 
-        <div class="tl-item sr-reveal">
-          <div class="tl-year-col">
-            <span class="tl-year">2023</span>
-            <div class="tl-year-line"></div>
+        <div class="tl-row sr-reveal">
+          <div class="tl-yr">2024</div>
+          <div class="tl-spine"><div class="tl-node"></div><div class="tl-thread"></div></div>
+          <div class="tl-box tilt-card">
+            <span class="tl-org">Kapital Bank</span>
+            <span class="tl-role">Subsequent Control Department Intern · Uzbekistan</span>
+            <p>Reviewed banking documentation for accuracy and regulatory compliance. Identified and corrected procedural errors through post-control review processes.</p>
+            <div class="tl-chips"><span>Banking Audit</span><span>Compliance</span><span>Document Control</span></div>
           </div>
-          <div class="tl-dot"></div>
-          <div class="tl-content">
+        </div>
+
+        <div class="tl-row sr-reveal">
+          <div class="tl-yr">2023</div>
+          <div class="tl-spine"><div class="tl-node"></div><div class="tl-thread"></div></div>
+          <div class="tl-box tilt-card">
             <span class="tl-org">Asaka Bank</span>
-            <span class="tl-role">Credit Monitoring Intern · Uzbekistan</span>
-            <p>Tracked active loan portfolio performance, supported preparation of credit monitoring reports, and developed understanding of credit risk classification methodologies used within a commercial bank.</p>
-            <div class="tl-tags">
-              <span>Credit Risk</span><span>Loan Monitoring</span><span>Risk Classification</span>
-            </div>
+            <span class="tl-role">Credit Monitoring Department Intern · Uzbekistan</span>
+            <p>Assessed credit risk on issued loans, maintained client communication. Developed an automated Excel tracker to flag overdue credits and display outstanding debt — improving portfolio visibility.</p>
+            <div class="tl-chips"><span>Credit Risk</span><span>Loan Monitoring</span><span>Excel Automation</span></div>
           </div>
         </div>
 
-        <div class="tl-item sr-reveal">
-          <div class="tl-year-col">
-            <span class="tl-year">2022</span>
-            <div class="tl-year-line"></div>
+        <div class="tl-row sr-reveal">
+          <div class="tl-yr">2022–23</div>
+          <div class="tl-spine"><div class="tl-node"></div><div class="tl-thread"></div></div>
+          <div class="tl-box tilt-card">
+            <span class="tl-org">Freelance Consulting</span>
+            <span class="tl-role">Tender Analyst · Uzbekistan</span>
+            <p>Monitored government tender platforms, sourced business opportunities. Compared market and tender prices to assess profitability before bid submission on behalf of a private company.</p>
+            <div class="tl-chips"><span>Market Analysis</span><span>Tender Management</span><span>Price Analysis</span></div>
           </div>
-          <div class="tl-dot"></div>
-          <div class="tl-content">
+        </div>
+
+        <div class="tl-row sr-reveal">
+          <div class="tl-yr">2022</div>
+          <div class="tl-spine"><div class="tl-node"></div><div class="tl-thread"></div></div>
+          <div class="tl-box tilt-card">
             <span class="tl-org">Aloqa Bank</span>
-            <span class="tl-role">Foreign Currency & Trade Finance Intern · Uzbekistan</span>
-            <p>Supported operations in the foreign currency department, including document handling for letters of credit and correspondence with correspondent banks in international trade finance transactions.</p>
-            <div class="tl-tags">
-              <span>Trade Finance</span><span>Letters of Credit</span><span>Foreign Currency</span>
-            </div>
+            <span class="tl-role">Foreign Exchange Department Intern · Uzbekistan</span>
+            <p>Handled letter of credit (LC) operations. Built an Excel database to streamline document tracking and improve workflow visibility across international trade finance transactions.</p>
+            <div class="tl-chips"><span>Trade Finance</span><span>Letters of Credit</span><span>Foreign Currency</span></div>
           </div>
         </div>
 
-        <div class="tl-item sr-reveal">
-          <div class="tl-year-col">
-            <span class="tl-year">2021</span>
-            <div class="tl-year-line"></div>
-          </div>
-          <div class="tl-dot"></div>
-          <div class="tl-content">
-            <span class="tl-org">Halk Bank</span>
-            <span class="tl-role">Legal & Credit Documentation Intern · Uzbekistan</span>
-            <p>Assisted in processing and verifying credit file documentation for individual and corporate borrowers, including collateral records and compliance checklists for loan agreements.</p>
-            <div class="tl-tags">
-              <span>Credit Documentation</span><span>Legal Compliance</span><span>Loan Processing</span>
-            </div>
+        <div class="tl-row sr-reveal">
+          <div class="tl-yr">2021</div>
+          <div class="tl-spine"><div class="tl-node"></div><div class="tl-thread"></div></div>
+          <div class="tl-box tilt-card">
+            <span class="tl-org">Xalq Bank</span>
+            <span class="tl-role">Legal Department Intern · Uzbekistan</span>
+            <p>Studied credit documentation formalization and client consultation. Gained working knowledge of banking law and loan procedures under Uzbek regulation.</p>
+            <div class="tl-chips"><span>Credit Documentation</span><span>Banking Law</span><span>Loan Procedures</span></div>
           </div>
         </div>
 
-        <div class="tl-item sr-reveal">
-          <div class="tl-year-col">
-            <span class="tl-year">2020</span>
-            <div class="tl-year-line"></div>
-          </div>
-          <div class="tl-dot"></div>
-          <div class="tl-content">
+        <div class="tl-row sr-reveal">
+          <div class="tl-yr">2020–2024</div>
+          <div class="tl-spine"><div class="tl-node"></div></div>
+          <div class="tl-box tilt-card">
             <span class="tl-org">Tashkent State University of Economics</span>
-            <span class="tl-role">B.Sc. Banking & Bank Audit · Tashkent, Uzbekistan</span>
-            <p>Undergraduate degree in Banking and Bank Audit. Academic publication: «Безналичные платежи в Узбекистане» — an analysis of cashless payment system development in Uzbekistan.</p>
-            <div class="tl-tags">
-              <span>Banking</span><span>Financial Analysis</span><span>Academic Research</span>
-            </div>
+            <span class="tl-role">B.Sc. Banking & Audit · Tashkent · GPA 4.32/5.0</span>
+            <p>Undergraduate degree in Banking and Bank Audit. Academic publication: «Безналичные платежи в Узбекистане» — analysis of cashless payment system development in Uzbekistan.</p>
+            <div class="tl-chips"><span>Banking</span><span>Financial Audit</span><span>Academic Research</span></div>
           </div>
         </div>
 
@@ -384,60 +380,61 @@
     </div>
   </section>
 
-  <!-- RESEARCH -->
-  <section class="section section-dark" id="research">
-    <div class="container container-narrow">
-      <span class="section-label sr-reveal">/ Research</span>
-      <h2 class="section-heading sr-reveal">Research interests</h2>
-      <div class="research-block sr-reveal">
-        <div class="research-accent-bar"></div>
-        <div class="research-content">
+  <!-- ══════════ RESEARCH ══════════ -->
+  <section class="section" id="research">
+    <div class="container narrow">
+      <span class="chip sr-reveal">/ Research</span>
+      <h2 class="sec-heading sr-reveal">Research interests</h2>
+
+      <div class="res-card tilt-card sr-reveal">
+        <div class="res-bar"></div>
+        <div class="res-body">
           <h3>Algorithmic Discrimination in AI-Based Credit Scoring</h3>
-          <p class="research-context">Ongoing — MBA research, Sejong University</p>
-          <p>As machine learning models become embedded in lending decisions, questions arise about whether they encode or amplify historical biases — even without using protected attributes directly. My research examines proxy bias in credit features, applicable fairness metrics, and the regulatory landscape (EU AI Act, CFPB guidance).</p>
+          <p class="res-ctx">Ongoing — MBA research, Sejong University</p>
+          <p>As machine learning models become embedded in lending decisions, questions arise about whether they encode or amplify historical biases. My research examines proxy bias in credit features, fairness metrics, and the regulatory landscape — EU AI Act, CFPB guidance.</p>
         </div>
       </div>
-      <div class="divider"></div>
-      <div class="research-block sr-reveal">
-        <div class="research-accent-bar"></div>
-        <div class="research-content">
-          <h3>Cashless Payments in Uzbekistan <span class="lang-tag">RU</span></h3>
-          <p class="research-context">Undergraduate publication — Tashkent State University of Economics</p>
-          <p>An examination of the development of non-cash payment instruments in Uzbekistan, analyzing trends in digital payment infrastructure, policy initiatives, and gaps in financial inclusion.</p>
-          <p class="cite">Murtazaev S.O. «Безналичные платежи в Узбекистане» — TSUE</p>
+
+      <div class="res-card tilt-card sr-reveal" style="margin-top:1.5rem">
+        <div class="res-bar"></div>
+        <div class="res-body">
+          <h3>Cashless Payments in Uzbekistan <span class="badge-ru">RU</span></h3>
+          <p class="res-ctx">Undergraduate publication — TSUE, Tashkent</p>
+          <p>Analysis of the development and adoption of non-cash payment instruments in Uzbekistan — digital infrastructure, policy initiatives, and financial inclusion gaps.</p>
+          <p class="res-cite">Murtazaev S.O. «Безналичные платежи в Узбекистане» — TSUE</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section class="section" id="contact">
-    <div class="container contact-container sr-reveal">
-      <span class="section-label">/ Contact</span>
-      <h2 class="section-heading centered">Let's connect</h2>
-      <p class="contact-intro">Open to connecting with researchers, practitioners, and recruiters in finance, risk management, banking analytics, or AI in finance.</p>
-      <p class="contact-open">Currently open to: internships &amp; entry-level analyst roles</p>
-      <div class="contact-links">
-        <a href="https://linkedin.com/in/sardormurtazaev" target="_blank" rel="noopener" class="contact-link">
+  <!-- ══════════ CONTACT ══════════ -->
+  <section class="section sec-dark" id="contact">
+    <div class="container narrow centered">
+      <span class="chip sr-reveal">/ Contact</span>
+      <h2 class="sec-heading sr-reveal">Let's connect</h2>
+      <p class="contact-sub sr-reveal">Open to connecting with researchers, practitioners, and recruiters in finance, risk management, or AI in finance.</p>
+      <p class="contact-open sr-reveal">Currently open to: internships &amp; entry-level analyst roles</p>
+      <div class="contact-row sr-reveal">
+        <a href="https://linkedin.com/in/sadomu" target="_blank" rel="noopener" class="clink magnetic" data-strength="20">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
           LinkedIn
         </a>
-        <a href="https://github.com/sardormurtazaev" target="_blank" rel="noopener" class="contact-link">
+        <a href="https://github.com/sardormurtazaev" target="_blank" rel="noopener" class="clink magnetic" data-strength="20">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
           GitHub
         </a>
-        <a href="https://orcid.org/" target="_blank" rel="noopener" class="contact-link">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9 7h2M9 12h6M9 17h6"/></svg>
-          ORCID
+        <a href="mailto:murtazaev.sardor.2003@gmail.com" class="clink magnetic" data-strength="20">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Email
         </a>
       </div>
     </div>
   </section>
 
   <footer class="footer">
-    <div class="container footer-inner">
-      <span>© Sardor Murtazaev · Seoul, South Korea</span>
-      <span class="footer-names">Sardor Murtazaev · Murtazaev Sardor · Муртазаев Сардор</span>
+    <div class="container footer-row">
+      <span>© Sardor Murtazaev · Seoul 2025</span>
+      <span class="footer-alt">Sardor Murtazaev · Murtazaev Sardor · Муртазаев Сардор</span>
     </div>
   </footer>
 
