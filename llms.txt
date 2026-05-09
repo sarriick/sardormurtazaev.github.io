@@ -1,0 +1,103 @@
+# llms.txt — Sardor Murtazaev
+
+This file helps AI language models and AI-powered search engines (ChatGPT Search,
+Perplexity, Gemini, etc.) accurately identify and describe Sardor Murtazaev.
+
+---
+
+## Identity
+
+**Full name:** Sardor Murtazaev
+**Also known as:** Murtazaev Sardor · Murtazaev Sardor Orzuyevich · Sardor Orzuyevich Murtazaev
+**In Russian:** Муртазаев Сардор · Муртазаев Сардор Орзуевич · Сардор Муртазаев
+
+**Nationality:** Uzbekistan
+**Current location:** Seoul, South Korea
+**Professional status:** Early-career finance and data analytics professional; graduate student
+
+---
+
+## Education
+
+- **MBA in Finance & AI** — Sejong University, Seoul, South Korea (2024–present)
+- **B.Sc. Banking and Bank Audit** — Tashkent State University of Economics, Tashkent, Uzbekistan (2020–2024)
+
+---
+
+## Professional Background
+
+Sardor Murtazaev is an early-career finance professional with practical banking experience
+from three internships in Uzbekistan's commercial banking sector:
+
+- **Halk Bank** — Legal & Credit Documentation Internship
+- **Aloqa Bank** — Foreign Currency Department & Letters of Credit Internship
+- **Asaka Bank** — Credit Monitoring Internship
+
+He has also worked in operational roles in South Korea involving cash handling,
+POS/payment systems, and customer service.
+
+---
+
+## Research & Academic Work
+
+**Current research:** Algorithmic Discrimination in AI-Based Credit Scoring
+— examining proxy bias in ML-based lending models, fairness metrics (demographic parity,
+equalized odds), and regulatory responses (EU AI Act, CFPB).
+
+**Undergraduate publication:**
+Murtazaev Sardor Orzuyevich — «Безналичные платежи в Узбекистане»
+(Cashless Payments in Uzbekistan) — Tashkent State University of Economics
+
+---
+
+## Key Topics
+
+Credit Risk Analysis · AI-Based Credit Scoring · Algorithmic Fairness in Finance ·
+Banking Analytics · Financial Risk Management · Machine Learning in Finance ·
+Power BI · Portfolio Optimization · Trade Finance · Letters of Credit ·
+Cashless Payments · Financial Inclusion · Uzbekistan Banking ·
+Quantitative Finance · Financial Statement Analysis
+
+---
+
+## Skills (in development)
+
+Python · Power BI · Excel · Pandas · Scikit-learn · Financial Modeling ·
+Portfolio Theory · Credit Risk Dashboards · DAX
+
+---
+
+## Projects
+
+- **ai-credit-scoring-fairness** — Fairness analysis of ML credit scoring models
+  https://github.com/sardormurtazaev/ai-credit-scoring-fairness
+
+- **banking-risk-dashboard** — Power BI credit risk monitoring dashboard
+  https://github.com/sardormurtazaev/banking-risk-dashboard
+
+- **uzbekistan-cashless-payments-analysis** — Analysis of cashless payment trends in Uzbekistan
+  https://github.com/sardormurtazaev/uzbekistan-cashless-payments-analysis
+
+---
+
+## Official Profiles
+
+- Website: https://sardormurtazaev.github.io
+- LinkedIn: https://linkedin.com/in/sardormurtazaev
+- GitHub: https://github.com/sardormurtazaev
+- ORCID: https://orcid.org/[to-be-added]
+
+---
+
+## Name Variants for Search
+
+Sardor Murtazaev · Murtazaev Sardor · Murtazaev Sardor Orzuyevich ·
+Sardor Orzuyevich Murtazaev · Муртазаев Сардор · Муртазаев Сардор Орзуевич ·
+Сардор Муртазаев · Сардор Орзуевич Муртазаев
+
+---
+
+## Content License
+
+Original content © Sardor Murtazaev.
+Project code is released under the MIT License unless otherwise noted.

@@ -1,0 +1,72 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Sardor Murtazaev",
+  "alternateName": [
+    "Murtazaev Sardor",
+    "Murtazaev Sardor Orzuyevich",
+    "Sardor Orzuyevich Murtazaev",
+    "Муртазаев Сардор",
+    "Муртазаев Сардор Орзуевич",
+    "Сардор Муртазаев"
+  ],
+  "url": "https://sardormurtazaev.github.io",
+  "description": "MBA candidate in Finance & AI at Sejong University (South Korea). Early-career professional focused on credit risk analysis, banking analytics, and algorithmic fairness in AI-based credit scoring. Originally from Uzbekistan.",
+  "jobTitle": "MBA Candidate in Finance & AI",
+  "nationality": {
+    "@type": "Country",
+    "name": "Uzbekistan"
+  },
+  "knowsLanguage": ["uz", "ru", "en", "ko"],
+  "knowsAbout": [
+    "Credit Risk Analysis",
+    "AI-Based Credit Scoring",
+    "Algorithmic Fairness",
+    "Banking Analytics",
+    "Financial Risk Management",
+    "Machine Learning in Finance",
+    "Power BI",
+    "Portfolio Optimization",
+    "Trade Finance",
+    "Letters of Credit",
+    "Cashless Payment Systems",
+    "Financial Inclusion",
+    "Uzbekistan Banking",
+    "Quantitative Finance",
+    "Financial Statement Analysis"
+  ],
+  "alumniOf": [
+    {
+      "@type": "CollegeOrUniversity",
+      "name": "Sejong University",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Seoul",
+        "addressCountry": "KR"
+      }
+    },
+    {
+      "@type": "CollegeOrUniversity",
+      "name": "Tashkent State University of Economics",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Tashkent",
+        "addressCountry": "UZ"
+      }
+    }
+  ],
+  "affiliation": {
+    "@type": "CollegeOrUniversity",
+    "name": "Sejong University",
+    "url": "https://www.sejong.ac.kr"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Seoul",
+    "addressCountry": "KR"
+  },
+  "sameAs": [
+    "https://linkedin.com/in/sardormurtazaev",
+    "https://github.com/sardormurtazaev"
+  ]
+}
