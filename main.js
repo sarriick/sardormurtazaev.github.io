@@ -1,175 +1,357 @@
+/* ================================================
+   FOREST NIGHT — main.js
+   Effects:
+   1. Custom cursor (ring + dot, lag)
+   2. Click ripple
+   3. Falling leaves / particles on canvas
+   4. Hero letter scramble + split animation
+   5. Magnetic buttons / links
+   6. 3D card tilt on hover
+   7. Nav scroll state + progress bar
+   8. Scroll reveal (IntersectionObserver, stagger)
+   9. Animated stat counters (easeOutQuart)
+   10. Nav link hover (roll-up text)
+   ================================================ */
+
 (function () {
   'use strict';
 
-  /* ---------- CUSTOM CURSOR ---------- */
-  const cursor    = document.getElementById('cursor');
-  const cursorDot = document.getElementById('cursor-dot');
-  let mx = -100, my = -100, cx = -100, cy = -100;
+  /* ──────────────────────────────────────────
+     1. CUSTOM CURSOR
+  ────────────────────────────────────────── */
+  const ring = document.getElementById('cursor-ring');
+  const dot  = document.getElementById('cursor-dot');
+  let mx = -200, my = -200, rx = -200, ry = -200;
 
   document.addEventListener('mousemove', e => {
     mx = e.clientX; my = e.clientY;
-    cursorDot.style.left = mx + 'px';
-    cursorDot.style.top  = my + 'px';
+    dot.style.left  = mx + 'px';
+    dot.style.top   = my + 'px';
   });
-  function animateCursor() {
-    cx += (mx - cx) * 0.12;
-    cy += (my - cy) * 0.12;
-    if (cursor) { cursor.style.left = cx + 'px'; cursor.style.top = cy + 'px'; }
-    requestAnimationFrame(animateCursor);
-  }
-  animateCursor();
 
-  /* ---------- PARTICLE CANVAS ---------- */
-  const canvas = document.getElementById('particles-canvas');
+  (function tickCursor() {
+    rx += (mx - rx) * 0.1;
+    ry += (my - ry) * 0.1;
+    if (ring) { ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; }
+    requestAnimationFrame(tickCursor);
+  })();
+
+  document.querySelectorAll('a, button, .tilt-card, .magnetic').forEach(el => {
+    el.addEventListener('mouseenter', () => ring && ring.classList.add('hovering'));
+    el.addEventListener('mouseleave', () => ring && ring.classList.remove('hovering'));
+  });
+
+  /* ──────────────────────────────────────────
+     2. CLICK RIPPLE
+  ────────────────────────────────────────── */
+  const rippleCont = document.getElementById('ripple-container');
+  document.addEventListener('click', e => {
+    if (!rippleCont) return;
+    const r = document.createElement('div');
+    r.className = 'ripple';
+    r.style.left   = e.clientX + 'px';
+    r.style.top    = e.clientY + 'px';
+    r.style.width  = r.style.height = '80px';
+    rippleCont.appendChild(r);
+    r.addEventListener('animationend', () => r.remove());
+  });
+
+  /* ──────────────────────────────────────────
+     3. FALLING LEAVES / FOREST PARTICLES
+  ────────────────────────────────────────── */
+  const canvas = document.getElementById('forest-canvas');
   if (canvas) {
     const ctx = canvas.getContext('2d');
-    let W, H, particles = [], mouse = { x: -999, y: -999 };
+    let W, H, leaves = [], mouse = { x: -999, y: -999 };
+
+    const LEAF_COLORS = [
+      'rgba(90,138,100,',
+      'rgba(61,102,68,',
+      'rgba(45,74,50,',
+      'rgba(139,96,64,',
+      'rgba(92,61,40,',
+      'rgba(176,128,96,',
+    ];
 
     function resize() {
       W = canvas.width  = canvas.offsetWidth;
       H = canvas.height = canvas.offsetHeight;
     }
     resize();
-    window.addEventListener('resize', () => { resize(); initParticles(); });
+    window.addEventListener('resize', () => { resize(); initLeaves(); });
 
-    function initParticles() {
-      particles = [];
-      const count = Math.floor((W * H) / 13000);
-      for (let i = 0; i < count; i++) {
-        particles.push({
-          x: Math.random() * W, y: Math.random() * H,
-          r: Math.random() * 1.2 + 0.3,
-          vx: (Math.random() - 0.5) * 0.18,
-          vy: (Math.random() - 0.5) * 0.18,
-          alpha: Math.random() * 0.5 + 0.1,
-          pulse: Math.random() * Math.PI * 2,
-        });
+    function randLeaf() {
+      return {
+        x:  Math.random() * W,
+        y:  Math.random() * H - H,
+        vx: (Math.random() - 0.5) * 0.6,
+        vy: Math.random() * 0.8 + 0.3,
+        size: Math.random() * 5 + 3,
+        rot:  Math.random() * Math.PI * 2,
+        rotV: (Math.random() - 0.5) * 0.02,
+        sway: Math.random() * Math.PI * 2,
+        swayS: Math.random() * 0.008 + 0.004,
+        swayA: Math.random() * 0.6 + 0.2,
+        color: LEAF_COLORS[Math.floor(Math.random() * LEAF_COLORS.length)],
+        alpha: Math.random() * 0.5 + 0.15,
+        shape: Math.floor(Math.random() * 3),
+      };
+    }
+
+    function initLeaves() {
+      leaves = [];
+      const n = Math.floor(W * H / 12000);
+      for (let i = 0; i < n; i++) {
+        const l = randLeaf();
+        l.y = Math.random() * H; // start scattered
+        leaves.push(l);
       }
     }
-    initParticles();
+    initLeaves();
 
     canvas.addEventListener('mousemove', e => {
       const r = canvas.getBoundingClientRect();
-      mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top;
+      mouse.x = e.clientX - r.left;
+      mouse.y = e.clientY - r.top;
     });
-    canvas.addEventListener('mouseleave', () => { mouse.x = -999; mouse.y = -999; });
 
-    function drawParticles() {
-      ctx.clearRect(0, 0, W, H);
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
-        p.pulse += 0.008;
-        p.x += p.vx; p.y += p.vy;
-        if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
-        if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+    function drawLeaf(l) {
+      ctx.save();
+      ctx.translate(l.x, l.y);
+      ctx.rotate(l.rot);
+      ctx.globalAlpha = l.alpha;
+      ctx.fillStyle = l.color + l.alpha + ')';
 
-        const dx = p.x - mouse.x, dy = p.y - mouse.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 120) {
-          const force = (120 - dist) / 120 * 0.6;
-          p.x += dx / dist * force; p.y += dy / dist * force;
-        }
-
-        const pulse = (Math.sin(p.pulse) + 1) / 2;
-        const a = p.alpha * (0.6 + pulse * 0.4);
-        const c = dist < 140 ? [200, 168, 92] : [220, 215, 200];
+      if (l.shape === 0) {
+        // Oval leaf
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r + pulse * 0.4, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${c[0]},${c[1]},${c[2]},${a})`;
+        ctx.ellipse(0, 0, l.size, l.size * 0.45, 0, 0, Math.PI * 2);
         ctx.fill();
+      } else if (l.shape === 1) {
+        // Triangle leaf
+        ctx.beginPath();
+        ctx.moveTo(0, -l.size);
+        ctx.lineTo(l.size * 0.6, l.size * 0.5);
+        ctx.lineTo(-l.size * 0.6, l.size * 0.5);
+        ctx.closePath();
+        ctx.fill();
+      } else {
+        // Diamond
+        ctx.beginPath();
+        ctx.moveTo(0, -l.size * 0.9);
+        ctx.lineTo(l.size * 0.5, 0);
+        ctx.lineTo(0, l.size * 0.7);
+        ctx.lineTo(-l.size * 0.5, 0);
+        ctx.closePath();
+        ctx.fill();
+      }
 
-        for (let j = i + 1; j < particles.length; j++) {
-          const q = particles[j];
-          const dx2 = p.x - q.x, dy2 = p.y - q.y;
-          const d2 = Math.sqrt(dx2 * dx2 + dy2 * dy2);
-          if (d2 < 90) {
+      ctx.restore();
+    }
+
+    // Connecting lines between close particles
+    function drawConnections() {
+      for (let i = 0; i < leaves.length; i++) {
+        for (let j = i + 1; j < leaves.length; j++) {
+          const dx = leaves[i].x - leaves[j].x;
+          const dy = leaves[i].y - leaves[j].y;
+          const d  = Math.sqrt(dx*dx + dy*dy);
+          if (d < 80) {
             ctx.beginPath();
-            ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y);
-            ctx.strokeStyle = `rgba(200,168,92,${(1 - d2 / 90) * 0.08})`;
-            ctx.lineWidth = 0.5; ctx.stroke();
+            ctx.moveTo(leaves[i].x, leaves[i].y);
+            ctx.lineTo(leaves[j].x, leaves[j].y);
+            ctx.strokeStyle = `rgba(61,102,68,${(1 - d/80) * 0.07})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
           }
         }
       }
-      requestAnimationFrame(drawParticles);
     }
-    requestAnimationFrame(drawParticles);
+
+    function animate() {
+      ctx.clearRect(0, 0, W, H);
+      drawConnections();
+
+      leaves.forEach(l => {
+        l.sway += l.swayS;
+        l.x += l.vx + Math.sin(l.sway) * l.swayA;
+        l.y += l.vy;
+        l.rot += l.rotV;
+
+        // Mouse repulsion
+        const dx = l.x - mouse.x, dy = l.y - mouse.y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < 100) {
+          const f = (100 - dist) / 100 * 0.8;
+          l.x += (dx / dist) * f;
+          l.y += (dy / dist) * f;
+        }
+
+        if (l.y > H + 20) {
+          l.y = -20;
+          l.x = Math.random() * W;
+        }
+        if (l.x < -20) l.x = W + 20;
+        if (l.x > W + 20) l.x = -20;
+
+        drawLeaf(l);
+      });
+
+      requestAnimationFrame(animate);
+    }
+    animate();
   }
 
-  /* ---------- NAV SCROLL + PROGRESS BAR ---------- */
-  const nav      = document.getElementById('nav');
-  const progress = document.getElementById('nav-progress');
+  /* ──────────────────────────────────────────
+     4. HERO LETTER SCRAMBLE + SPLIT ANIMATION
+  ────────────────────────────────────────── */
+  const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%';
+
+  function scrambleLetter(el, finalChar, delay, duration) {
+    let start = null;
+    el.style.animationDelay = delay + 'ms';
+    el.classList.add('hero-letter');
+
+    const interval = setInterval(() => {
+      el.textContent = CHARS[Math.floor(Math.random() * CHARS.length)];
+    }, 60);
+
+    setTimeout(() => {
+      clearInterval(interval);
+      el.textContent = finalChar;
+    }, delay + duration);
+  }
+
+  function splitWord(containerId, word, baseDelay) {
+    const el = document.getElementById(containerId);
+    if (!el) return;
+    el.innerHTML = '';
+    [...word].forEach((ch, i) => {
+      if (ch === ' ') {
+        el.appendChild(document.createTextNode('\u00A0'));
+        return;
+      }
+      const span = document.createElement('span');
+      span.textContent = ch;
+      span.style.animationDelay = (baseDelay + i * 60) + 'ms';
+      span.classList.add('hero-letter');
+      el.appendChild(span);
+      scrambleLetter(span, ch, baseDelay + i * 60, 400);
+    });
+  }
+
+  splitWord('word-sardor',    'Sardor',    200);
+  splitWord('word-murtazaev', 'Murtazaev', 550);
+
+  /* ──────────────────────────────────────────
+     5. MAGNETIC BUTTONS / ELEMENTS
+  ────────────────────────────────────────── */
+  document.querySelectorAll('.magnetic').forEach(el => {
+    const strength = parseFloat(el.dataset.strength) || 20;
+
+    el.addEventListener('mousemove', e => {
+      const rect = el.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top  + rect.height / 2;
+      const dx = e.clientX - cx;
+      const dy = e.clientY - cy;
+      el.style.transform = `translate(${dx * strength / rect.width}px, ${dy * strength / rect.height}px)`;
+    });
+
+    el.addEventListener('mouseleave', () => {
+      el.style.transform = '';
+    });
+  });
+
+  /* ──────────────────────────────────────────
+     6. 3D CARD TILT
+  ────────────────────────────────────────── */
+  document.querySelectorAll('.tilt-card').forEach(card => {
+    const MAXDEG = 6;
+
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width  - 0.5;
+      const y = (e.clientY - rect.top)  / rect.height - 0.5;
+      card.style.transform = `perspective(700px) rotateY(${x * MAXDEG * 2}deg) rotateX(${-y * MAXDEG}deg) scale3d(1.015,1.015,1.015)`;
+      card.style.transition = 'transform .05s linear';
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+      card.style.transition = 'transform .45s cubic-bezier(.16,1,.3,1)';
+    });
+  });
+
+  /* ──────────────────────────────────────────
+     7. NAV: SCROLL STATE + PROGRESS BAR
+  ────────────────────────────────────────── */
+  const nav    = document.getElementById('nav');
+  const navBar = document.getElementById('nav-bar');
 
   window.addEventListener('scroll', () => {
-    const scrollTop = window.scrollY;
-    const docH = document.documentElement.scrollHeight - window.innerHeight;
-    if (progress) progress.style.width = (docH > 0 ? (scrollTop / docH) * 100 : 0) + '%';
-    if (nav) nav.classList.toggle('scrolled', scrollTop > 60);
+    const sy  = window.scrollY;
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    if (navBar) navBar.style.width = (max > 0 ? (sy / max) * 100 : 0) + '%';
+    if (nav)    nav.classList.toggle('stuck', sy > 60);
   }, { passive: true });
 
-  /* ---------- SCROLL REVEAL ---------- */
-  const revealEls = document.querySelectorAll('.sr-reveal');
-  const revealObs = new IntersectionObserver((entries) => {
+  /* ──────────────────────────────────────────
+     8. SCROLL REVEAL
+  ────────────────────────────────────────── */
+  const srEls = document.querySelectorAll('.sr-reveal');
+
+  const srObs = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
-      // Stagger siblings
       const parent = entry.target.parentElement;
-      const siblings = parent ? parent.querySelectorAll('.sr-reveal') : [];
-      let delay = 0;
-      siblings.forEach((sib, idx) => { if (sib === entry.target) delay = idx * 70; });
-      setTimeout(() => entry.target.classList.add('visible'), delay);
-      revealObs.unobserve(entry.target);
+      const siblings = parent ? [...parent.querySelectorAll('.sr-reveal')] : [];
+      const idx   = siblings.indexOf(entry.target);
+      const delay = idx * 80;
+      setTimeout(() => entry.target.classList.add('in'), delay);
+      srObs.unobserve(entry.target);
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-  revealEls.forEach(el => revealObs.observe(el));
 
-  /* ---------- ANIMATED COUNTERS (like Artel stats) ---------- */
-  const statNums = document.querySelectorAll('.stat-num[data-target]');
+  srEls.forEach(el => srObs.observe(el));
 
+  /* ──────────────────────────────────────────
+     9. ANIMATED STAT COUNTERS
+  ────────────────────────────────────────── */
   function easeOutQuart(t) { return 1 - Math.pow(1 - t, 4); }
 
-  function animateCounter(el) {
-    const target = parseInt(el.getAttribute('data-target'), 10);
-    const duration = 1800;
-    const start = performance.now();
+  function runCounter(el) {
+    const target = parseInt(el.dataset.target, 10);
+    // Special: 428 → display as 4.28
+    const isDecimal = target === 428;
+    const duration  = 1800;
+    const start     = performance.now();
 
-    function step(now) {
-      const elapsed = now - start;
-      const progress = Math.min(elapsed / duration, 1);
-      const value = Math.round(easeOutQuart(progress) * target);
-      el.textContent = value;
-      if (progress < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
+    (function tick(now) {
+      const p = Math.min((now - start) / duration, 1);
+      const v = Math.round(easeOutQuart(p) * target);
+      el.textContent = isDecimal ? (v / 100).toFixed(2) : v;
+      if (p < 1) requestAnimationFrame(tick);
+    })(start);
   }
 
-  const counterObs = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      animateCounter(entry.target);
-      counterObs.unobserve(entry.target);
+  const ctrObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      runCounter(e.target);
+      ctrObs.unobserve(e.target);
     });
   }, { threshold: 0.5 });
 
-  statNums.forEach(el => counterObs.observe(el));
+  document.querySelectorAll('.stat-n[data-target]').forEach(el => ctrObs.observe(el));
 
-  /* ---------- HERO PARALLAX ORBS ---------- */
-  const orb1 = document.querySelector('.hero-orb-1');
-  const orb2 = document.querySelector('.hero-orb-2');
-  const orb3 = document.querySelector('.hero-orb-3');
-
-  document.addEventListener('mousemove', e => {
-    const nx = (e.clientX / window.innerWidth  - 0.5) * 2;
-    const ny = (e.clientY / window.innerHeight - 0.5) * 2;
-    if (orb1) orb1.style.transform = `translate(${nx * 20}px, ${ny * 15}px)`;
-    if (orb2) orb2.style.transform = `translate(${nx * -12}px, ${ny * -10}px)`;
-    if (orb3) orb3.style.transform = `translate(${nx * 8}px, ${ny * 12}px)`;
-  });
-
-  /* ---------- SMOOTH NAV SCROLL ---------- */
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', e => {
-      const target = document.querySelector(link.getAttribute('href'));
-      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  /* ──────────────────────────────────────────
+     10. SMOOTH SCROLL
+  ────────────────────────────────────────── */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
     });
   });
 
