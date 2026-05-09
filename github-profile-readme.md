@@ -57,7 +57,7 @@ Cashless Payments          →  Uzbekistan payment system analysis
 
 - 🌐 [sardormurtazaev.github.io](https://sardormurtazaev.github.io)
 - 💼 [linkedin.com/in/sardormurtazaev](https://linkedin.com/in/sardormurtazaev)
-- murtazaev.sardor.2003@gmail.com 
+- 🔬 ORCID: *(to be added)*
 
 ---
 
