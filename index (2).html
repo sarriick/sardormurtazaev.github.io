@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sardor Murtazaev | Finance &amp; AI | Sejong University</title>
+<meta name="description" content="Sardor Murtazaev - MBA candidate in Finance &amp; AI at Sejong University.">
+<meta name="author" content="Sardor Murtazaev">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Sardor Murtazaev","url":"https://sardormurtazaev.github.io","jobTitle":"MBA Candidate in Finance and AI","sameAs":["https://linkedin.com/in/sadomu","https://github.com/sardormurtazaev"]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+/* Forest Night */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blk:#07090a;--deep:#0c120e;--fst:#111f16;--grv:#1a2e20;
+  --acc:#6a9e72;--ac2:#3d6644;--amb:#8b6040;--tan:#b08060;
+  --crm:#e8dfc8;--cdm:#c8bfa8;--cmt:#9a9080;--cdp:#6a6058;
+  --bdr:rgba(106,158,114,.15);--bds:rgba(232,223,200,.06);
+  --glo:rgba(106,158,114,.14);
+  --fh:'DM Serif Display',Georgia,serif;
+  --fb:'Inter',system-ui,sans-serif;
+  --fm:'DM Mono','Courier New',monospace;
+  --mw:1100px;--mn:740px;
+}
+html{scroll-behavior:smooth}
+body{background:#010408;color:var(--crm);font-family:var(--fb);font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden;cursor:none}
+a{color:inherit;text-decoration:none}
+
+/* NOISE */
+.noise{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* CURSOR */
+.cr{position:fixed;z-index:9999;pointer-events:none;width:36px;height:36px;border-radius:50%;border:1.5px solid var(--acc);transform:translate(-50%,-50%);transition:width .2s,height .2s,border-color .2s}
+.cd{position:fixed;z-index:9999;pointer-events:none;width:5px;height:5px;border-radius:50%;background:var(--acc);transform:translate(-50%,-50%)}
+.cr.big{width:52px;height:52px;border-color:var(--tan)}
+@media(hover:none){.cr,.cd{display:none};body{cursor:auto}}
+
+/* RIPPLE */
+.rw{position:fixed;inset:0;z-index:2;pointer-events:none;overflow:hidden}
+.rpl{position:absolute;border-radius:50%;border:1px solid rgba(106,158,114,.45);transform:translate(-50%,-50%) scale(0);animation:rplO 1s ease-out forwards;pointer-events:none}
+@keyframes rplO{to{transform:translate(-50%,-50%) scale(5);opacity:0}}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1.3rem 3rem;transition:background .4s,padding .3s}
+.nav.stuck{background:rgba(8,12,10,.88);backdrop-filter:blur(16px);padding:1rem 3rem;border-bottom:1px solid var(--bds)}
+.nprog{position:absolute;bottom:0;left:0;height:1px;background:var(--acc);width:0}
+.logo{display:flex;align-items:baseline;gap:.5rem}
+.logo b{font-family:var(--fh);font-size:1.15rem;color:var(--acc);font-weight:400;letter-spacing:.02em}
+.logo span{font-family:var(--fm);font-size:.6rem;color:var(--cmt);letter-spacing:.12em}
+.nlinks{list-style:none;display:flex;gap:2rem}
+.nlinks a{font-family:var(--fm);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cmt);display:block;overflow:hidden;height:1em;line-height:1em;position:relative;transition:color .2s}
+.nlinks a::after{content:attr(href);position:absolute;top:100%;left:0;color:var(--acc);font-size:.7rem;letter-spacing:.1em;white-space:nowrap;transition:top .22s cubic-bezier(.77,0,.175,1)}
+.nlinks a:hover{color:transparent}
+.nlinks a:hover::after{top:0}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;padding:9rem 3rem 6rem}
+#fc{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.bl{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:1}
+.b1{width:650px;height:650px;background:radial-gradient(circle,rgba(45,74,50,.22) 0%,transparent 70%);top:-200px;left:-150px;animation:b1a 18s ease-in-out infinite}
+.b2{width:450px;height:450px;background:radial-gradient(circle,rgba(58,37,24,.28) 0%,transparent 70%);bottom:-80px;right:-80px;animation:b2a 24s ease-in-out infinite}
+@keyframes b1a{0%,100%{transform:translate(0,0)}50%{transform:translate(50px,-40px)}}
+@keyframes b2a{0%,100%{transform:translate(0,0)}50%{transform:translate(-50px,-40px)}}
+.hi{position:relative;z-index:2;max-width:var(--mw);margin:0 auto;width:100%}
+
+.eye{font-family:var(--fm);font-size:.72rem;letter-spacing:.2em;color:var(--acc);text-transform:uppercase;display:flex;align-items:center;gap:.7rem;margin-bottom:2rem}
+.edot{width:8px;height:8px;border-radius:50%;background:var(--acc);flex-shrink:0;position:relative}
+.edot::before{content:'';position:absolute;inset:-5px;border:1px solid var(--ac2);border-radius:50%;animation:pr 2.5s ease-in-out infinite}
+@keyframes pr{0%,100%{transform:scale(1);opacity:1}60%{transform:scale(2.2);opacity:0}}
+
+.hname{font-family:var(--fh);font-weight:400;font-size:clamp(4rem,11vw,9rem);line-height:.92;letter-spacing:-.02em;margin-bottom:2rem;display:flex;flex-direction:column}
+#w1{color:var(--crm)}
+#w2{color:transparent;-webkit-text-stroke:1px var(--cdm);padding-left:.06em}
+.hl{display:inline-block}
+.hl.go{animation:ltr .6s cubic-bezier(.16,1,.3,1) both}
+@keyframes ltr{from{opacity:0;transform:translateY(.8em) rotate(5deg)}to{opacity:1;transform:none}}
+
+.htags{display:flex;align-items:center;gap:.9rem;margin-bottom:2rem;flex-wrap:wrap}
+.htags span{font-family:var(--fm);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amb);border:1px solid rgba(139,96,64,.35);padding:.32rem .85rem;border-radius:2px}
+.htags em{color:var(--cdp);font-style:normal}
+.hdesc{max-width:480px;font-size:1rem;color:rgba(232,223,200,.62);line-height:1.85;margin-bottom:3rem}
+.hbtns{display:flex;gap:1.2rem;margin-bottom:4rem}
+.bp{font-family:var(--fm);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;background:var(--acc);color:var(--blk);padding:.9rem 2.2rem;border-radius:2px;display:inline-block;transition:background .25s,transform .2s}
+.bp:hover{background:#7ab884;transform:translateY(-2px)}
+.bg{font-family:var(--fm);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cdm);padding:.9rem 2.2rem;border:1px solid var(--bdr);border-radius:2px;display:inline-block;transition:border-color .25s,color .25s,transform .2s}
+.bg:hover{border-color:var(--acc);color:var(--acc);transform:translateY(-2px)}
+.hscr{display:flex;align-items:center;gap:1rem;font-family:var(--fm);font-size:.6rem;letter-spacing:.18em;color:var(--cdp);text-transform:uppercase}
+.str{width:56px;height:1px;background:var(--cdp);position:relative;overflow:hidden}
+.sth{position:absolute;top:0;left:-100%;width:100%;height:100%;background:var(--acc);animation:sh 2.5s ease-in-out infinite}
+@keyframes sh{0%{left:-100%}100%{left:100%}}
+
+/* MARQUEE */
+.mqb{background:rgba(5,7,9,0.72);border-top:1px solid var(--bds);border-bottom:1px solid var(--bds);padding:.85rem 0;overflow:hidden}
+.mqt{display:flex;gap:2rem;white-space:nowrap;animation:mq 45s linear infinite;font-family:var(--fm);font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;color:var(--cdp)}
+.mqt:hover{animation-play-state:paused}
+.mqt s{text-decoration:none}
+.mqt i{color:var(--ac2);font-style:normal}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SECTIONS */
+.sec{padding:7rem 3rem}
+.sdk{background:rgba(5,7,9,0.70)}
+.con{max-width:var(--mw);margin:0 auto}
+.narrow{max-width:var(--mn);margin:0 auto}
+.centered{text-align:center}
+.sh{font-family:var(--fh);font-weight:400;font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.15;color:var(--crm);margin-bottom:2.5rem}
+.sh.centered{text-align:center}
+.ssub{color:var(--cmt);font-size:.95rem;max-width:540px;margin-bottom:3rem}
+
+/* REVEAL */
+.sr{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.16,1,.3,1)}
+.sr.in{opacity:1;transform:none}
+
+/* ABOUT */
+.abg{display:grid;grid-template-columns:1fr 310px;gap:5rem;align-items:start}
+.abl p{color:rgba(232,223,200,.68);font-size:.97rem;margin-bottom:1.3rem}
+.abr{display:flex;flex-direction:column;gap:1rem}
+.ic{border:1px solid var(--bds);padding:1.6rem;background:rgba(26,46,32,.28);border-radius:3px;transition:border-color .3s,background .3s}
+.ic:hover{border-color:var(--bdr);background:rgba(45,74,50,.3)}
+.ic2{border-color:var(--bdr)!important}
+.icl{display:block;font-family:var(--fm);font-size:.65rem;letter-spacing:.18em;color:var(--acc);text-transform:uppercase;margin-bottom:.8rem}
+.ic p{font-size:.88rem;color:var(--cmt);margin-bottom:.5rem}
+.ic p:last-child{margin-bottom:0}
+.ic strong{color:var(--crm)}
+.ic small{color:var(--cdp);font-size:.8rem;display:block}
+.lps{display:flex;flex-wrap:wrap;gap:.45rem}
+.lps span{font-family:var(--fm);font-size:.67rem;color:var(--cmt);border:1px solid var(--bds);padding:.22rem .6rem;border-radius:20px}
+.lps em{font-style:normal;color:var(--cdp);font-size:.6rem;margin-left:.25rem}
+.tc{will-change:transform;transform-style:preserve-3d}
+
+/* STATS */
+.stb{background:rgba(10,18,12,0.68);border-top:1px solid var(--bds);border-bottom:1px solid var(--bds)}
+.str2{display:flex;align-items:stretch}
+.st{flex:1;padding:3.5rem 2rem;display:flex;flex-direction:column;align-items:center;text-align:center;transition:background .3s}
+.st:hover{background:rgba(45,74,50,.28)}
+.sn{font-family:var(--fh);font-size:clamp(2.8rem,5vw,4.2rem);font-weight:400;color:var(--acc);line-height:1;display:block;margin-bottom:.9rem}
+.su{font-family:var(--fm);font-size:.72rem;color:var(--amb);display:block;margin-bottom:.6rem}
+.sl{font-family:var(--fm);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cdp);line-height:1.6}
+.sdv{width:1px;background:var(--bds);margin:2.5rem 0;flex-shrink:0}
+
+/* FOCUS */
+.fcg{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bds);border:1px solid var(--bds);margin-top:3rem}
+.fc{background:rgba(5,7,9,0.78);padding:2.2rem;position:relative;overflow:hidden;transition:background .3s}
+.fc:hover{background:rgba(13,22,16,0.88)}
+.fg{position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(90,138,100,.1) 0%,transparent 55%);opacity:0;transition:opacity .4s}
+.fc:hover .fg{opacity:1}
+.fi{font-size:1.6rem;margin-bottom:1.1rem;display:block}
+.fc h3{font-family:var(--fh);font-weight:400;font-size:1.1rem;color:var(--crm);margin-bottom:.65rem}
+.fc p{font-size:.85rem;color:var(--cmt);line-height:1.7}
+.fb{position:absolute;bottom:0;left:0;height:2px;width:0;background:var(--acc);transition:width .4s ease}
+.fc:hover .fb{width:100%}
+
+/* PROJECTS */
+.pl{display:flex;flex-direction:column}
+.pc{display:flex;gap:2.5rem;align-items:flex-start;padding:3rem 0;border-bottom:1px solid var(--bds);position:relative;transition:padding-left .3s}
+.pc:first-child{border-top:1px solid var(--bds)}
+.pc:hover{padding-left:1rem}
+.pg{position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--acc),var(--amb));transform:scaleY(0);transform-origin:top;transition:transform .45s cubic-bezier(.16,1,.3,1)}
+.pc:hover .pg{transform:scaleY(1)}
+.pn{font-family:var(--fm);font-size:.6rem;letter-spacing:.1em;color:var(--cdp);padding-top:.3rem;flex-shrink:0;min-width:22px}
+.pb{flex:1}
+.pt{display:flex;align-items:center;justify-content:space-between;margin-bottom:.85rem}
+.ps{font-family:var(--fm);font-size:.67rem;color:var(--amb);letter-spacing:.06em}
+.pbg{font-family:var(--fm);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cdp);border:1px solid var(--bds);padding:.18rem .65rem;border-radius:20px}
+.pc h3{font-family:var(--fh);font-size:1.45rem;color:var(--crm);margin-bottom:.75rem;transition:color .2s}
+.pc:hover h3{color:var(--acc)}
+.pc p{font-size:.88rem;color:var(--cmt);max-width:640px;margin-bottom:1.2rem;line-height:1.75}
+.pl2{font-family:var(--fm);font-size:.7rem;letter-spacing:.08em;color:var(--acc);transition:letter-spacing .2s}
+.pl2:hover{letter-spacing:.15em}
+
+/* TIMELINE */
+.tl{margin-top:3.5rem}
+.tlr{display:grid;grid-template-columns:110px 32px 1fr;gap:0 1.5rem;margin-bottom:2.5rem;align-items:start}
+.tlr:last-child{margin-bottom:0}
+.tly{font-family:var(--fm);font-size:.7rem;letter-spacing:.1em;color:var(--acc);text-align:right;padding-top:.1rem}
+.tls{display:flex;flex-direction:column;align-items:center}
+.tln{width:12px;height:12px;border-radius:50%;background:var(--grv);border:2px solid var(--ac2);flex-shrink:0;margin-top:.05rem;transition:border-color .3s,background .3s}
+.tlr:hover .tln{border-color:var(--acc);background:var(--glo)}
+.tlt{flex:1;width:1px;background:var(--bds);margin-top:6px;min-height:36px}
+.tlb{border:1px solid var(--bds);padding:1.4rem 1.5rem;background:rgba(17,31,22,.38);border-radius:3px;transition:border-color .3s,background .3s;margin-bottom:.5rem}
+.tlr:hover .tlb{border-color:var(--bdr);background:rgba(26,46,32,.45)}
+.tlo{display:block;font-family:var(--fh);font-size:1.05rem;color:var(--crm);margin-bottom:.22rem}
+.tlro{display:block;font-family:var(--fm);font-size:.65rem;letter-spacing:.07em;color:var(--amb);margin-bottom:.85rem}
+.tlb p{font-size:.86rem;color:var(--cmt);line-height:1.75;margin-bottom:.85rem}
+.tlc{display:flex;flex-wrap:wrap;gap:.38rem}
+.tlc span{font-family:var(--fm);font-size:.6rem;letter-spacing:.07em;text-transform:uppercase;color:var(--cdp);border:1px solid var(--bds);padding:.18rem .55rem;border-radius:2px;transition:border-color .2s,color .2s}
+.tlr:hover .tlc span{border-color:var(--bdr);color:var(--cmt)}
+
+/* RESEARCH */
+.rc{display:flex;border:1px solid var(--bds);background:rgba(17,31,22,.32);border-radius:3px;overflow:hidden;transition:border-color .3s,background .3s}
+.rc:hover{border-color:var(--bdr);background:rgba(26,46,32,.45)}
+.rcb{width:3px;flex-shrink:0;background:linear-gradient(to bottom,var(--acc),var(--amb))}
+.rcd{padding:1.8rem;flex:1}
+.rcd h3{font-family:var(--fh);font-weight:400;font-size:1.25rem;color:var(--crm);margin-bottom:.35rem}
+.rcc{font-family:var(--fm);font-size:.67rem;color:var(--amb);letter-spacing:.07em;margin-bottom:.85rem;display:block}
+.rcd p{font-size:.9rem;color:var(--cmt);margin-bottom:.8rem;line-height:1.75}
+.rci{font-family:var(--fm)!important;font-size:.74rem!important;color:var(--cdp)!important;font-style:italic}
+.bru{font-family:var(--fm);font-size:.56rem;letter-spacing:.1em;color:var(--amb);border:1px solid rgba(139,96,64,.4);padding:.06rem .38rem;vertical-align:middle;margin-left:.45rem;display:inline-block}
+
+/* CONTACT */
+.cs{font-size:.95rem;color:var(--cmt);max-width:460px;margin:0 auto .8rem}
+.co{font-family:var(--fm);font-size:.7rem;letter-spacing:.1em;color:var(--acc);margin-bottom:2.5rem}
+.crow{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
+.cl{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--fm);font-size:.73rem;letter-spacing:.09em;color:var(--cmt);padding:.82rem 1.7rem;border:1px solid var(--bds);border-radius:2px;transition:color .25s,border-color .25s,background .25s}
+.cl:hover{color:var(--acc);border-color:var(--bdr);background:var(--glo)}
+.cl svg{stroke:currentColor}
+
+/* FOOTER */
+.foot{padding:1.5rem 3rem;border-top:1px solid var(--bds);background:rgba(5,7,9,0.80)}
+.fr{display:flex;justify-content:space-between;align-items:center}
+.fr span{font-family:var(--fm);font-size:.65rem;letter-spacing:.07em;color:var(--cdp)}
+.fa{color:rgba(90,138,100,.22)!important}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  .abg{grid-template-columns:1fr;gap:3rem}
+  .fcg{grid-template-columns:repeat(2,1fr)}
+  .pc{flex-direction:column;gap:1rem}
+  .str2{flex-wrap:wrap}
+  .st{min-width:45%}
+  .sdv{display:none}
+  .tlr{grid-template-columns:82px 26px 1fr}
+}
+@media(max-width:640px){
+  .nav{padding:1rem 1.5rem}
+  .nlinks{display:none}
+  .hero{padding:7rem 1.5rem 4rem}
+  .sec{padding:4.5rem 1.5rem}
+  .fcg{grid-template-columns:1fr}
+  .fr{flex-direction:column;gap:.5rem;text-align:center}
+  body{cursor:auto}
+  .cr,.cd{display:none}
+  .tlr{grid-template-columns:65px 22px 1fr;gap:0 .7rem}
+}
+
+/* ── PARALLAX LAYERS ── */
+.hi > *{will-change:transform,opacity}
+.hi{will-change:opacity}
+.eye,.hname,.htags,.hdesc,.hbtns,.hscr{transition:none}
+.b1,.b2{transition:none!important}
+#fc{transition:none}
+/* hero fade on scroll */
+.hi{transition:opacity .1s linear}
+
+/* ── SOLAR SYSTEM BACKGROUND ── */
+#solar-bg{
+  position:fixed;top:0;left:0;
+  width:100%;height:100%;
+  z-index:0;
+  pointer-events:none;
+  display:block;
+}
+/* raise all page content above solar bg */
+.noise{z-index:2}
+.cr,.cd,.rw{z-index:9999}
+.nav{z-index:500}
+.hero{z-index:1}
+.hero #fc{z-index:1}
+.hero .bl{z-index:1}
+.hero .hi{z-index:3}
+.sec,.stb,.sdk,.foot{position:relative;z-index:2}
+
+/* transparent section backgrounds with blur for readability */
+.sec{background:rgba(8,12,14,0.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.sdk{backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.stb{backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.mqb{backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.foot{backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+
+#solar-bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;display:block;transition:opacity .3s}
+.noise{z-index:2}.cr,.cd,.rw{z-index:9999}.nav{z-index:500}
+.hero{z-index:1}.hero #fc{z-index:1}.hero .bl{z-index:1}.hero .hi{z-index:3}
+.hi>*{will-change:transform,opacity}.hi{will-change:opacity}
+.eye,.hname,.htags,.hdesc,.hbtns,.hscr{transition:none}.b1,.b2{transition:none!important}
+</style>
+</head>
+<body>
+
+<canvas id="solar-bg"></canvas>
+<div class="noise" aria-hidden="true"></div>
+<div class="cr" id="cr"></div>
+<div class="cd" id="cd"></div>
+<div class="rw" id="rw" aria-hidden="true"></div>
+
+<nav class="nav" id="nav">
+  <a class="logo" href="#hero"><b>SM</b><span>Finance &amp; AI</span></a>
+  <ul class="nlinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#focus">Focus</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#timeline">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nprog" id="nprog"></div>
+</nav>
+
+<section class="hero" id="hero">
+  <canvas id="fc"></canvas>
+  <div class="bl b1"></div><div class="bl b2"></div>
+  <div class="hi">
+    <p class="eye"><span class="edot"></span>Seoul, South Korea &nbsp;&middot;&nbsp; Uzbekistan</p>
+    <h1 class="hname"><span id="w1">Sardor</span><span id="w2">Murtazaev</span></h1>
+    <div class="htags">
+      <span>MBA Finance &amp; AI</span><em>&mdash;</em>
+      <span>Sejong University</span><em>&mdash;</em>
+      <span>Seoul</span>
+    </div>
+    <p class="hdesc">Building skills at the intersection of banking, data analytics<br>and machine learning &mdash; focused on credit risk and responsible AI.</p>
+    <div class="hbtns">
+      <a href="#projects" class="bp">View Projects</a>
+      <a href="#contact" class="bg">Get in Touch</a>
+    </div>
+    <div class="hscr"><div class="str"><div class="sth"></div></div><span>scroll to explore</span></div>
+  </div>
+</section>
+
+<div class="mqb" aria-hidden="true"><div class="mqt">
+  <s>Credit Risk</s><i>&#10022;</i><s>AI Credit Scoring</s><i>&#10022;</i><s>Algorithmic Fairness</s><i>&#10022;</i><s>Banking Analytics</s><i>&#10022;</i><s>Power BI</s><i>&#10022;</i><s>Portfolio Optimization</s><i>&#10022;</i><s>ML in Finance</s><i>&#10022;</i><s>Trade Finance</s><i>&#10022;</i><s>Cashless Payments</s><i>&#10022;</i>
+  <s>Credit Risk</s><i>&#10022;</i><s>AI Credit Scoring</s><i>&#10022;</i><s>Algorithmic Fairness</s><i>&#10022;</i><s>Banking Analytics</s><i>&#10022;</i><s>Power BI</s><i>&#10022;</i><s>Portfolio Optimization</s><i>&#10022;</i><s>ML in Finance</s><i>&#10022;</i><s>Trade Finance</s><i>&#10022;</i><s>Cashless Payments</s><i>&#10022;</i>
+</div></div>
+
+<section class="sec" id="about"><div class="con"><div class="abg">
+  <div class="abl">
+    <h2 class="sh sr">Finance background.<br>Data-driven thinking.</h2>
+    <p class="sr">I am an MBA candidate in Finance &amp; AI at Sejong University (GPA 4.28/4.5), with a B.Sc. in Banking &amp; Audit from Tashkent State University of Economics. Before graduate school, I completed internships at four Uzbek commercial banks working across legal documentation, foreign exchange, credit monitoring, and subsequent control.</p>
+    <p class="sr">My research explores how AI-based credit scoring systems can produce discriminatory outcomes and what responses are emerging. I am building a project portfolio in Python and Power BI, and seeking opportunities in finance analysis, credit risk, or data analytics.</p>
+  </div>
+  <div class="abr">
+    <div class="ic tc sr"><div class="icl">Education</div>
+      <p>MBA Finance &amp; AI &middot; <strong>4.28/4.5</strong><br><small>Sejong University, Seoul &middot; 2024&ndash;2026</small></p>
+      <p>B.Sc. Banking &amp; Audit &middot; <strong>4.32/5.0</strong><br><small>TSUE, Tashkent &middot; 2020&ndash;2024</small></p>
+    </div>
+    <div class="ic tc sr"><div class="icl">Languages</div>
+      <div class="lps">
+        <span>Uzbek <em>native</em></span><span>Russian <em>native</em></span>
+        <span>English <em>fluent</em></span><span>Korean <em>basic</em></span><span>Tajik <em>basic</em></span>
+      </div>
+    </div>
+    <div class="ic ic2 tc sr"><div class="icl">Open to</div>
+      <p>Internships &amp; entry-level roles<br>Finance &middot; Risk &middot; Analytics</p>
+    </div>
+  </div>
+</div></div></section>
+
+<section class="stb" id="stats"><div class="con str2">
+  <div class="st sr"><span class="sn" data-t="4">0</span><span class="sl">Banking internships<br>in Uzbekistan</span></div>
+  <div class="sdv"></div>
+  <div class="st sr"><span class="sn" data-t="5">0</span><span class="sl">Languages<br>spoken</span></div>
+  <div class="sdv"></div>
+  <div class="st sr"><span class="sn" data-t="428">0</span><span class="su">/4.5</span><span class="sl">Current<br>GPA</span></div>
+  <div class="sdv"></div>
+  <div class="st sr"><span class="sn" data-t="3">0</span><span class="sl">Active GitHub<br>projects</span></div>
+  <div class="sdv"></div>
+  <div class="st sr"><span class="sn" data-t="2">0</span><span class="sl">Countries studied<br>&amp; worked</span></div>
+</div></section>
+
+<section class="sec sdk" id="focus"><div class="con">
+  <h2 class="sh centered sr">What I am working on</h2>
+  <div class="fcg">
+    <div class="fc tc sr"><div class="fg"></div><span class="fi">&#9878;</span><h3>Algorithmic Fairness</h3><p>Researching how ML credit scoring models encode bias and what fairness metrics and regulatory frameworks apply.</p><div class="fb"></div></div>
+    <div class="fc tc sr"><div class="fg"></div><span class="fi">&#128202;</span><h3>Credit Risk Analytics</h3><p>Building dashboards for portfolio monitoring, NPL analysis, and risk segmentation using Power BI and Python.</p><div class="fb"></div></div>
+    <div class="fc tc sr"><div class="fg"></div><span class="fi">&#127970;</span><h3>Banking Operations</h3><p>Practical grounding across legal documentation, foreign exchange, credit monitoring and subsequent control.</p><div class="fb"></div></div>
+    <div class="fc tc sr"><div class="fg"></div><span class="fi">&#128200;</span><h3>Quantitative Finance</h3><p>Portfolio optimization, log-return analysis, covariance modeling and the Sharpe ratio through coursework.</p><div class="fb"></div></div>
+    <div class="fc tc sr"><div class="fg"></div><span class="fi">&#128179;</span><h3>Payment Systems</h3><p>Analyzing cashless payment adoption in Uzbekistan connecting policy, infrastructure and financial inclusion data.</p><div class="fb"></div></div>
+    <div class="fc tc sr"><div class="fg"></div><span class="fi">&#129302;</span><h3>ML in Finance</h3><p>Classification models for credit risk and bias mitigation using Scikit-learn and Fairlearn.</p><div class="fb"></div></div>
+  </div>
+</div></section>
+
+<section class="sec" id="projects"><div class="con">
+  <h2 class="sh sr">Work in progress</h2>
+  <p class="ssub sr">Active projects from graduate studies and independent exploration. All code is open on GitHub.</p>
+  <div class="pl">
+    <div class="pc tc sr"><div class="pn">01</div><div class="pb"><div class="pt"><span class="ps">Python &middot; Scikit-learn &middot; Fairlearn</span><span class="pbg">In Progress</span></div><h3>AI Credit Scoring Fairness</h3><p>Analyzing how ML models in credit decisions produce biased outcomes even when sensitive attributes are excluded. Applies demographic parity, equalized odds, and compares mitigation strategies.</p><a href="https://github.com/sardormurtazaev/ai-credit-scoring-fairness" class="pl2" target="_blank" rel="noopener">GitHub &rarr;</a></div><div class="pg"></div></div>
+    <div class="pc tc sr"><div class="pn">02</div><div class="pb"><div class="pt"><span class="ps">Power BI &middot; Excel &middot; DAX</span><span class="pbg">In Progress</span></div><h3>Banking Risk Dashboard</h3><p>Interactive Power BI dashboard visualizing credit risk metrics across a simulated loan portfolio including NPL ratios, portfolio-at-risk by segment, and early warning indicators.</p><a href="https://github.com/sardormurtazaev/banking-risk-dashboard" class="pl2" target="_blank" rel="noopener">GitHub &rarr;</a></div><div class="pg"></div></div>
+    <div class="pc tc sr"><div class="pn">03</div><div class="pb"><div class="pt"><span class="ps">Python &middot; Pandas &middot; Matplotlib</span><span class="pbg">In Progress</span></div><h3>Uzbekistan Cashless Payments Analysis</h3><p>Data-driven analysis of cashless payment development in Uzbekistan using Central Bank of Uzbekistan and World Bank public data.</p><a href="https://github.com/sardormurtazaev/uzbekistan-cashless-payments-analysis" class="pl2" target="_blank" rel="noopener">GitHub &rarr;</a></div><div class="pg"></div></div>
+  </div>
+</div></section>
+
+<section class="sec sdk" id="timeline"><div class="con">
+  <h2 class="sh sr">Background &amp; Education</h2>
+  <div class="tl">
+    <div class="tlr sr"><div class="tly">2024&ndash;2026</div><div class="tls"><div class="tln"></div><div class="tlt"></div></div><div class="tlb tc"><span class="tlo">Sejong University</span><span class="tlro">MBA Finance &amp; AI &middot; Seoul &middot; GPA 4.28/4.5</span><p>AI Applications in Finance, Machine Learning, Financial Institutions &amp; Markets, Derivatives, Data Analysis for Business. Research: algorithmic discrimination in AI-based credit scoring.</p><div class="tlc"><span>ML in Finance</span><span>Credit Risk</span><span>Derivatives</span><span>Data Analysis</span></div></div></div>
+    <div class="tlr sr"><div class="tly">2024</div><div class="tls"><div class="tln"></div><div class="tlt"></div></div><div class="tlb tc"><span class="tlo">Kapital Bank</span><span class="tlro">Subsequent Control Intern &middot; Uzbekistan</span><p>Reviewed banking documentation for accuracy and regulatory compliance. Identified and corrected procedural errors through post-control review processes.</p><div class="tlc"><span>Banking Audit</span><span>Compliance</span><span>Document Control</span></div></div></div>
+    <div class="tlr sr"><div class="tly">2023</div><div class="tls"><div class="tln"></div><div class="tlt"></div></div><div class="tlb tc"><span class="tlo">Asaka Bank</span><span class="tlro">Credit Monitoring Intern &middot; Uzbekistan</span><p>Assessed credit risk on issued loans. Developed an automated Excel tracker to flag overdue credits and display outstanding debt.</p><div class="tlc"><span>Credit Risk</span><span>Loan Monitoring</span><span>Excel Automation</span></div></div></div>
+    <div class="tlr sr"><div class="tly">2022&ndash;23</div><div class="tls"><div class="tln"></div><div class="tlt"></div></div><div class="tlb tc"><span class="tlo">Freelance Consulting</span><span class="tlro">Tender Analyst &middot; Uzbekistan</span><p>Monitored government tender platforms. Compared market and tender prices to assess profitability before bid submission.</p><div class="tlc"><span>Market Analysis</span><span>Tender Management</span><span>Price Analysis</span></div></div></div>
+    <div class="tlr sr"><div class="tly">2022</div><div class="tls"><div class="tln"></div><div class="tlt"></div></div><div class="tlb tc"><span class="tlo">Aloqa Bank</span><span class="tlro">Foreign Exchange Intern &middot; Uzbekistan</span><p>Handled letter of credit operations. Built an Excel database to streamline document tracking across international trade finance transactions.</p><div class="tlc"><span>Trade Finance</span><span>Letters of Credit</span><span>Foreign Currency</span></div></div></div>
+    <div class="tlr sr"><div class="tly">2021</div><div class="tls"><div class="tln"></div><div class="tlt"></div></div><div class="tlb tc"><span class="tlo">Xalq Bank</span><span class="tlro">Legal Department Intern &middot; Uzbekistan</span><p>Studied credit documentation formalization. Gained working knowledge of banking law and loan procedures under Uzbek regulation.</p><div class="tlc"><span>Credit Documentation</span><span>Banking Law</span><span>Loan Procedures</span></div></div></div>
+    <div class="tlr sr"><div class="tly">2020&ndash;2024</div><div class="tls"><div class="tln"></div></div><div class="tlb tc"><span class="tlo">Tashkent State University of Economics</span><span class="tlro">B.Sc. Banking &amp; Audit &middot; Tashkent &middot; GPA 4.32/5.0</span><p>Undergraduate degree in Banking and Bank Audit. Publication: Beznalichnye platezhi v Uzbekistane &mdash; analysis of cashless payment system development.</p><div class="tlc"><span>Banking</span><span>Financial Audit</span><span>Academic Research</span></div></div></div>
+  </div>
+</div></section>
+
+<section class="sec" id="research"><div class="con narrow">
+  <h2 class="sh sr">Research interests</h2>
+  <div class="rc tc sr"><div class="rcb"></div><div class="rcd"><h3>Algorithmic Discrimination in AI-Based Credit Scoring</h3><p class="rcc">Ongoing &mdash; MBA research, Sejong University</p><p>As machine learning models become embedded in lending decisions, questions arise about whether they encode or amplify historical biases. My research examines proxy bias, fairness metrics, and the regulatory landscape including EU AI Act and CFPB guidance.</p></div></div>
+  <div class="rc tc sr" style="margin-top:1.5rem"><div class="rcb"></div><div class="rcd"><h3>Cashless Payments in Uzbekistan <span class="bru">RU</span></h3><p class="rcc">Undergraduate publication &mdash; TSUE, Tashkent</p><p>Analysis of the development of non-cash payment instruments in Uzbekistan covering digital infrastructure, policy initiatives, and financial inclusion gaps.</p><p class="rci">Murtazaev S.O. Beznalichnye platezhi v Uzbekistane &mdash; TSUE</p></div></div>
+</div></section>
+
+<section class="sec sdk" id="contact"><div class="con narrow centered">
+  <h2 class="sh sr">Let us connect</h2>
+  <p class="cs sr">Open to connecting with researchers, practitioners, and recruiters in finance, risk management, or AI in finance.</p>
+  <p class="co sr">Currently open to: internships &amp; entry-level analyst roles</p>
+  <div class="crow sr">
+    <a href="https://linkedin.com/in/sadomu" target="_blank" rel="noopener" class="cl"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
+    <a href="https://github.com/sardormurtazaev" target="_blank" rel="noopener" class="cl"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>GitHub</a>
+    <a href="mailto:murtazaev.sardor.2003@gmail.com" class="cl"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Email</a>
+  </div>
+</div></section>
+
+<footer class="foot"><div class="con fr">
+  <span>&copy; Sardor Murtazaev &middot; Seoul 2025</span>
+  <span class="fa">Sardor Murtazaev &middot; Murtazaev Sardor &middot; &#1052;&#1091;&#1088;&#1090;&#1072;&#1079;&#1072;&#1077;&#1074; &#1057;&#1072;&#1088;&#1076;&#1086;&#1088;</span>
+</div></footer>
+
+
+<script>
+(function(){
+'use strict';
+
+/* ── CURSOR ── */
+var cr=document.getElementById('cr'),cd=document.getElementById('cd');
+var mx=-200,my=-200,rx=-200,ry=-200;
+document.addEventListener('mousemove',function(e){
+  mx=e.clientX;my=e.clientY;
+  if(cd){cd.style.left=mx+'px';cd.style.top=my+'px';}
+});
+(function tick(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;
+  if(cr){cr.style.left=rx+'px';cr.style.top=ry+'px';}
+  requestAnimationFrame(tick);
+})();
+document.querySelectorAll('a,button,.tc').forEach(function(el){
+  el.addEventListener('mouseenter',function(){cr&&cr.classList.add('big')});
+  el.addEventListener('mouseleave',function(){cr&&cr.classList.remove('big')});
+});
+
+/* ── CLICK RIPPLE ── */
+var rw=document.getElementById('rw');
+document.addEventListener('click',function(e){
+  if(!rw)return;
+  var r=document.createElement('div');r.className='rpl';
+  r.style.left=e.clientX+'px';r.style.top=e.clientY+'px';
+  r.style.width=r.style.height='60px';rw.appendChild(r);
+  r.addEventListener('animationend',function(){r.remove()});
+});
+
+/* ── FOREST CANVAS ── */
+var fc=document.getElementById('fc');
+if(fc){
+  var ctx=fc.getContext('2d'),W,H,pts=[],mouse={x:-999,y:-999};
+  var COLS=['rgba(90,138,100,','rgba(61,102,68,','rgba(45,74,50,','rgba(139,96,64,','rgba(92,61,40,'];
+  function resize(){W=fc.width=fc.offsetWidth;H=fc.height=fc.offsetHeight;}
+  resize();
+  window.addEventListener('resize',function(){resize();init();});
+  function mk(){return{
+    x:Math.random()*W,y:Math.random()*H,
+    vx:(Math.random()-.5)*.5,vy:Math.random()*.6+.25,
+    sz:Math.random()*4+2.5,rot:Math.random()*Math.PI*2,
+    rv:(Math.random()-.5)*.018,
+    sw:Math.random()*Math.PI*2,ss:Math.random()*.007+.003,sa:Math.random()*.5+.2,
+    col:COLS[Math.floor(Math.random()*COLS.length)],
+    al:Math.random()*.42+.1,sh:Math.floor(Math.random()*3)
+  };}
+  function init(){pts=[];var n=Math.floor(W*H/10000);for(var i=0;i<n;i++)pts.push(mk());}
+  init();
+  fc.addEventListener('mousemove',function(e){
+    var r=fc.getBoundingClientRect();
+    mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top;
+  });
+  function drawCanvas(){
+    ctx.clearRect(0,0,W,H);
+    /* connections */
+    for(var i=0;i<pts.length;i++){
+      for(var j=i+1;j<pts.length;j++){
+        var dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);
+        if(d<75){
+          ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);
+          ctx.strokeStyle='rgba(61,102,68,'+(1-d/75)*.06+')';ctx.lineWidth=.5;ctx.stroke();
+        }
+      }
+    }
+    /* leaves */
+    pts.forEach(function(p){
+      p.sw+=p.ss;p.x+=p.vx+Math.sin(p.sw)*p.sa;p.y+=p.vy;p.rot+=p.rv;
+      var dx=p.x-mouse.x,dy=p.y-mouse.y,d=Math.sqrt(dx*dx+dy*dy);
+      if(d<90){var f=(90-d)/90*.7;p.x+=dx/d*f;p.y+=dy/d*f;}
+      if(p.y>H+15){p.y=-15;p.x=Math.random()*W;}
+      if(p.x<-15)p.x=W+15;if(p.x>W+15)p.x=-15;
+      ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot);ctx.globalAlpha=p.al;
+      ctx.fillStyle=p.col+p.al+')';ctx.beginPath();
+      if(p.sh===0)ctx.ellipse(0,0,p.sz,p.sz*.45,0,0,Math.PI*2);
+      else if(p.sh===1){ctx.moveTo(0,-p.sz);ctx.lineTo(p.sz*.6,p.sz*.5);ctx.lineTo(-p.sz*.6,p.sz*.5);ctx.closePath();}
+      else{ctx.moveTo(0,-p.sz*.9);ctx.lineTo(p.sz*.5,0);ctx.lineTo(0,p.sz*.65);ctx.lineTo(-p.sz*.5,0);ctx.closePath();}
+      ctx.fill();ctx.restore();
+    });
+    requestAnimationFrame(drawCanvas);
+  }
+  drawCanvas();
+}
+
+/* ══════════════════════════════════════════
+   PARALLAX SCROLL  (Jungle + Moon technique)
+   Each layer moves at a different speed —
+   creates illusion of depth on scroll.
+   ══════════════════════════════════════════ */
+var plxEye   = document.querySelector('.eye');
+var plxName  = document.getElementById('hero-name');  /* was .hname */
+var plxTags  = document.querySelector('.htags');
+var plxDesc  = document.querySelector('.hdesc');
+var plxBtns  = document.querySelector('.hbtns');
+var plxScr   = document.querySelector('.hscr');
+var plxB1    = document.querySelector('.b1');
+var plxB2    = document.querySelector('.b2');
+var plxCanvas= document.getElementById('fc');
+
+/* Store each element's natural transform so we ADD to it, not replace */
+function applyParallax(){
+  var v = window.scrollY;
+  /* Only run inside hero viewport */
+  var hero = document.getElementById('hero');
+  if(!hero) return;
+  var heroH = hero.offsetHeight;
+  if(v > heroH) return;
+
+  /* ── Background blobs: slowest (like rocks/water in Jungle) ── */
+  if(plxB1) plxB1.style.transform = 'translate('+(v*0.04)+'px,'+(v*-0.18)+'px)';
+  if(plxB2) plxB2.style.transform = 'translate('+(v*-0.06)+'px,'+(v*-0.12)+'px)';
+
+  /* ── Canvas drifts up very slowly (like forest layer) ── */
+  if(plxCanvas) plxCanvas.style.transform = 'translateY('+(v*0.08)+'px)';
+
+  /* ── Eyebrow: moves up slightly faster than scroll (Moon: text.marginTop) ── */
+  if(plxEye)  plxEye.style.transform  = 'translateY('+(v*-0.12)+'px)';
+
+  /* ── Name: middle speed – drifts up + slight horizontal (like title in Moon) ── */
+  if(plxName) plxName.style.transform = 'translate('+(v*0.04)+'px,'+(v*-0.22)+'px)';
+
+  /* ── Tags: slightly faster than name ── */
+  if(plxTags) plxTags.style.transform = 'translateY('+(v*-0.3)+'px)';
+
+  /* ── Description: faster still (foreground) ── */
+  if(plxDesc) plxDesc.style.transform = 'translateY('+(v*-0.38)+'px)';
+
+  /* ── Buttons + scroll hint: fastest layer (like bird in Jungle) ── */
+  if(plxBtns) plxBtns.style.transform = 'translateY('+(v*-0.45)+'px)';
+  if(plxScr)  plxScr.style.transform  = 'translateY('+(v*-0.5)+'px)';
+}
+
+/* Fade hero content out as user scrolls away */
+function heroFade(){
+  var v = window.scrollY;
+  var hero = document.getElementById('hero');
+  if(!hero) return;
+  var heroH = hero.offsetHeight;
+  var hi = document.querySelector('.hi');
+  if(!hi) return;
+  var fade = Math.max(0, 1 - (v / (heroH * 0.55)));
+  hi.style.opacity = fade;
+}
+
+/* ── MOUSE PARALLAX on hero (adds to scroll parallax) ── */
+var heroEl = document.getElementById('hero');
+var mouseOffX = 0, mouseOffY = 0;
+var targetOX  = 0, targetOY  = 0;
+
+document.addEventListener('mousemove', function(e){
+  if(!heroEl) return;
+  var r = heroEl.getBoundingClientRect();
+  /* Only active while mouse is over hero */
+  if(e.clientY > r.bottom) return;
+  targetOX = (e.clientX / window.innerWidth  - 0.5) * 2;
+  targetOY = (e.clientY / window.innerHeight - 0.5) * 2;
+});
+
+(function mouseParallaxTick(){
+  mouseOffX += (targetOX - mouseOffX) * 0.06;
+  mouseOffY += (targetOY - mouseOffY) * 0.06;
+  /* Blend mouse offset INTO the blobs (independent of scroll) */
+  if(plxB1 && window.scrollY < (heroEl ? heroEl.offsetHeight : 9999)){
+    var cur1 = plxB1.style.transform || '';
+    /* Override with combined scroll+mouse */
+    var sv = window.scrollY;
+    plxB1.style.transform = 'translate('+
+      (sv*0.04 + mouseOffX*22)+'px,'+
+      (sv*-0.18 + mouseOffY*15)+'px)';
+    if(plxB2) plxB2.style.transform = 'translate('+
+      (sv*-0.06 + mouseOffX*-14)+'px,'+
+      (sv*-0.12 + mouseOffY*-10)+'px)';
+  }
+  requestAnimationFrame(mouseParallaxTick);
+})();
+
+/* ── Combined scroll handler ── */
+window.addEventListener('scroll', function(){
+  applyParallax();
+  heroFade();
+
+  /* Nav progress + stuck */
+  var sy  = window.scrollY;
+  var max = document.documentElement.scrollHeight - window.innerHeight;
+  var np  = document.getElementById('nprog');
+  var nav = document.getElementById('nav');
+  if(np)  np.style.width  = (max > 0 ? (sy/max)*100 : 0)+'%';
+  if(nav) nav.classList.toggle('stuck', sy > 60);
+},{passive:true});
+
+/* ── NAV initial stuck check ── */
+(function(){
+  var nav = document.getElementById('nav');
+  var np  = document.getElementById('nprog');
+  if(nav) nav.classList.toggle('stuck', window.scrollY > 60);
+})();
+
+/* ══════════════════════════════════════════
+   LETTER SCRAMBLE  (hero name)
+   ══════════════════════════════════════════ */
+var CH='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789#@$%';
+function scramble(el,ch,delay){
+  setTimeout(function(){
+    var n=0,max=10;
+    var iv=setInterval(function(){
+      el.textContent=CH[Math.floor(Math.random()*CH.length)];
+      n++;if(n>=max){clearInterval(iv);el.textContent=ch;}
+    },55);
+  },delay);
+}
+function buildWord(id,word,base){
+  var el=document.getElementById(id);if(!el)return;
+  el.innerHTML='';
+  for(var i=0;i<word.length;i++){
+    var s=document.createElement('span');
+    s.className='hl';s.textContent=word[i];el.appendChild(s);
+    (function(sp,ch,d){
+      setTimeout(function(){sp.classList.add('go');},d);
+      scramble(sp,ch,d);
+    })(s,word[i],base+i*65);
+  }
+}
+buildWord('w1','Sardor',300);
+buildWord('w2','Murtazaev',650);
+
+/* ══════════════════════════════════════════
+   3D TILT on cards
+   ══════════════════════════════════════════ */
+document.querySelectorAll('.tc').forEach(function(c){
+  c.addEventListener('mousemove',function(e){
+    var r=c.getBoundingClientRect();
+    var x=(e.clientX-r.left)/r.width-.5;
+    var y=(e.clientY-r.top)/r.height-.5;
+    c.style.transform='perspective(700px) rotateY('+(x*10)+'deg) rotateX('+(-y*5)+'deg) scale3d(1.012,1.012,1.012)';
+    c.style.transition='transform .06s linear';
+  });
+  c.addEventListener('mouseleave',function(){
+    c.style.transform='';
+    c.style.transition='transform .4s cubic-bezier(.16,1,.3,1)';
+  });
+});
+
+/* ══════════════════════════════════════════
+   MAGNETIC BUTTONS
+   ══════════════════════════════════════════ */
+document.querySelectorAll('.bp,.bg,.cl').forEach(function(el){
+  el.addEventListener('mousemove',function(e){
+    var r=el.getBoundingClientRect();
+    var x=e.clientX-r.left-r.width/2;
+    var y=e.clientY-r.top-r.height/2;
+    el.style.transform='translate('+(x*.25)+'px,'+(y*.25)+'px)';
+  });
+  el.addEventListener('mouseleave',function(){el.style.transform='';});
+});
+
+/* ══════════════════════════════════════════
+   SCROLL REVEAL  (stagger siblings)
+   ══════════════════════════════════════════ */
+var srObs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(!e.isIntersecting)return;
+    var par=e.target.parentElement;
+    var sibs=par?Array.from(par.querySelectorAll('.sr')):[];
+    var idx=sibs.indexOf(e.target);
+    setTimeout(function(){e.target.classList.add('in');},idx*80);
+    srObs.unobserve(e.target);
+  });
+},{threshold:.1,rootMargin:'0px 0px -35px 0px'});
+document.querySelectorAll('.sr').forEach(function(el){srObs.observe(el);});
+
+/* ══════════════════════════════════════════
+   ANIMATED STAT COUNTERS
+   ══════════════════════════════════════════ */
+function easeOut(t){return 1-Math.pow(1-t,4);}
+var cObs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(!e.isIntersecting)return;
+    var el=e.target,t=parseInt(el.dataset.t,10),dec=(t===428),dur=1800,st=performance.now();
+    (function tick(now){
+      var p=Math.min((now-st)/dur,1),v=Math.round(easeOut(p)*t);
+      el.textContent=dec?(v/100).toFixed(2):v;
+      if(p<1)requestAnimationFrame(tick);
+    })(st);
+    cObs.unobserve(el);
+  });
+},{threshold:.5});
+document.querySelectorAll('.sn[data-t]').forEach(function(el){cObs.observe(el);});
+
+/* ══════════════════════════════════════════
+   SMOOTH SCROLL
+   ══════════════════════════════════════════ */
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+
+})();
+
+</script>
+<script>
+
+(function(){
+'use strict';
+if(typeof THREE==='undefined'){return;}
+var cvs=document.getElementById('solar-bg');
+if(!cvs)return;
+
+/* ─ RENDERER ─ */
+var renderer=new THREE.WebGLRenderer({canvas:cvs,antialias:true,alpha:false});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+renderer.setSize(window.innerWidth,window.innerHeight);
+renderer.setClearColor(0x010408,1);
+
+var scene=new THREE.Scene();
+var cam=new THREE.PerspectiveCamera(55,window.innerWidth/window.innerHeight,0.1,3000);
+cam.position.set(0,80,200);cam.lookAt(0,0,0);
+
+window.addEventListener('resize',function(){
+  renderer.setSize(window.innerWidth,window.innerHeight);
+  cam.aspect=window.innerWidth/window.innerHeight;
+  cam.updateProjectionMatrix();
+});
+
+/* ─ TWINKLING STARS (custom shader) ─ */
+var SC=4000;
+var sPos=new Float32Array(SC*3),sPhase=new Float32Array(SC),sSz=new Float32Array(SC);
+for(var i=0;i<SC;i++){
+  var r=500+Math.random()*1200,th=Math.random()*Math.PI*2,ph=Math.acos(2*Math.random()-1);
+  sPos[i*3]=r*Math.sin(ph)*Math.cos(th);
+  sPos[i*3+1]=r*Math.sin(ph)*Math.sin(th);
+  sPos[i*3+2]=r*Math.cos(ph);
+  sPhase[i]=Math.random()*Math.PI*2;
+  sSz[i]=Math.random()*2.8+0.4;
+}
+var sGeo=new THREE.BufferGeometry();
+sGeo.setAttribute('position',new THREE.BufferAttribute(sPos,3));
+sGeo.setAttribute('phase',new THREE.BufferAttribute(sPhase,1));
+sGeo.setAttribute('sz',new THREE.BufferAttribute(sSz,1));
+var sMat=new THREE.ShaderMaterial({
+  uniforms:{uTime:{value:0}},
+  vertexShader:[
+    'attribute float phase;attribute float sz;uniform float uTime;',
+    'varying float vBright;',
+    'void main(){',
+    '  vBright=0.55+0.45*sin(uTime*1.8+phase);',
+    '  gl_PointSize=sz*vBright;',
+    '  gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);',
+    '}'
+  ].join('\n'),
+  fragmentShader:[
+    'varying float vBright;',
+    'void main(){',
+    '  float d=length(gl_PointCoord-0.5)*2.0;',
+    '  float a=1.0-smoothstep(0.0,1.0,d);',
+    '  vec3 col=mix(vec3(0.8,0.85,1.0),vec3(1.0,0.95,0.8),vBright);',
+    '  gl_FragColor=vec4(col,a*vBright*0.9);',
+    '}'
+  ].join('\n'),
+  transparent:true,depthWrite:false,blending:THREE.AdditiveBlending
+});
+scene.add(new THREE.Points(sGeo,sMat));
+
+/* ─ PROCEDURAL TEXTURES ─ */
+function mktex(w,h,fn){
+  var c=document.createElement('canvas');c.width=w;c.height=h;
+  fn(c.getContext('2d'),w,h);return new THREE.CanvasTexture(c);
+}
+function nx(x,y,s){var n=Math.sin(x*127.1+y*311.7+s)*43758.5453;return n-Math.floor(n);}
+function fbm(x,y,s){return nx(x,y,s)*0.5+nx(x*2.1,y*2.1,s+1)*0.25+nx(x*4.3,y*4.3,s+2)*0.125;}
+
+var TEXTURES={
+  sun:mktex(512,256,function(c,w,h){
+    var g=c.createRadialGradient(w/2,h/2,0,w/2,h/2,w*0.55);
+    g.addColorStop(0,'#fff8b0');g.addColorStop(0.25,'#ffd700');
+    g.addColorStop(0.6,'#ff9500');g.addColorStop(1,'#cc4400');
+    c.fillStyle=g;c.fillRect(0,0,w,h);
+    for(var i=0;i<20;i++){
+      var x=w*0.15+Math.random()*w*0.7,y=h*0.1+Math.random()*h*0.8,r=Math.random()*14+4;
+      c.beginPath();c.arc(x,y,r,0,Math.PI*2);c.fillStyle='rgba(160,40,0,0.35)';c.fill();
+      c.beginPath();c.arc(x+r*0.3,y-r*0.3,r*0.35,0,Math.PI*2);c.fillStyle='rgba(255,220,80,0.3)';c.fill();
+    }
+  }),
+  mercury:mktex(512,256,function(c,w,h){
+    c.fillStyle='#7a7a7a';c.fillRect(0,0,w,h);
+    for(var px=0;px<w;px+=3){for(var py=0;py<h;py+=3){
+      var n=fbm(px/90,py/90,10);
+      c.fillStyle='rgba('+(n>0.55?90:60)+','+(n>0.55?90:60)+','+(n>0.55?90:60)+',0.7)';
+      c.fillRect(px,py,3,3);
+    }}
+    for(var i=0;i<45;i++){
+      var x=Math.random()*w,y=Math.random()*h,r=Math.random()*11+2;
+      c.beginPath();c.arc(x,y,r,0,Math.PI*2);c.fillStyle='rgba(40,40,40,0.55)';c.fill();
+      c.beginPath();c.arc(x-r*0.35,y-r*0.35,r*0.4,0,Math.PI*2);c.fillStyle='rgba(160,160,160,0.35)';c.fill();
+    }
+  }),
+  venus:mktex(512,256,function(c,w,h){
+    var g=c.createLinearGradient(0,0,w,0);
+    g.addColorStop(0,'#e8c87a');g.addColorStop(0.4,'#d4a840');g.addColorStop(0.7,'#c0a050');g.addColorStop(1,'#e0bc70');
+    c.fillStyle=g;c.fillRect(0,0,w,h);
+    for(var y=0;y<h;y+=8){
+      var a=0.06+Math.abs(Math.sin(y*0.18))*0.09;
+      c.fillStyle='rgba(255,200,80,'+a+')';c.fillRect(0,y,w,5);
+    }
+  }),
+  earth:mktex(512,256,function(c,w,h){
+    c.fillStyle='#1835a0';c.fillRect(0,0,w,h);
+    for(var px=0;px<w;px+=2){for(var py=0;py<h;py+=2){
+      var n=fbm(px/70,py/70,3)+fbm(px/25,py/25,7)*0.4;
+      if(n>0.68){
+        var g2=n>0.82?'#3a6e2a':n>0.75?'#4a7e35':'#556640';
+        c.fillStyle=g2;c.fillRect(px,py,2,2);
+      } else if(n>0.62){
+        c.fillStyle='#2060c0';c.fillRect(px,py,2,2);
+      }
+    }}
+    c.fillStyle='rgba(210,235,255,0.75)';c.fillRect(0,0,w,14);c.fillRect(0,h-14,w,14);
+    for(var i=0;i<22;i++){
+      c.beginPath();c.ellipse(Math.random()*w,Math.random()*h,Math.random()*35+8,Math.random()*11+3,Math.random()*Math.PI,0,Math.PI*2);
+      c.fillStyle='rgba(255,255,255,0.14)';c.fill();
+    }
+  }),
+  mars:mktex(512,256,function(c,w,h){
+    c.fillStyle='#b83a0c';c.fillRect(0,0,w,h);
+    for(var px=0;px<w;px+=2){for(var py=0;py<h;py+=2){
+      var n=fbm(px/65,py/65,6);
+      if(n>0.62){c.fillStyle='rgba(90,15,0,0.5)';c.fillRect(px,py,2,2);}
+      else if(n<0.38){c.fillStyle='rgba(200,80,30,0.6)';c.fillRect(px,py,2,2);}
+    }}
+    for(var i=0;i<30;i++){
+      var x=Math.random()*w,y=Math.random()*h,r=Math.random()*13+3;
+      c.beginPath();c.arc(x,y,r,0,Math.PI*2);c.fillStyle='rgba(70,10,0,0.45)';c.fill();
+    }
+    c.fillStyle='rgba(220,235,255,0.65)';
+    c.beginPath();c.ellipse(w/2,8,w*0.28,11,0,0,Math.PI*2);c.fill();
+  }),
+  jupiter:mktex(512,256,function(c,w,h){
+    var bands=['#c8905a','#e8c898','#9a5a28','#d4aa70','#b07040','#e0c080','#8a4818','#cc9060','#d8b878'];
+    var bh=h/bands.length;
+    bands.forEach(function(col,i){c.fillStyle=col;c.fillRect(0,i*bh,w,bh+2);});
+    for(var y=0;y<h;y+=1){
+      var wave=Math.sin(y*0.22+1.5)*12;
+      c.fillStyle='rgba(0,0,0,0.04)';c.fillRect(wave,y,w,1);
+    }
+    c.save();c.translate(w*0.62,h*0.56);
+    c.beginPath();c.ellipse(0,0,30,18,0,0,Math.PI*2);c.fillStyle='#b83818';c.fill();
+    c.beginPath();c.ellipse(0,0,22,13,0,0,Math.PI*2);c.fillStyle='#d84828';c.fill();
+    c.beginPath();c.ellipse(0,0,14,8,0,0,Math.PI*2);c.fillStyle='#e86030';c.fill();
+    c.restore();
+  }),
+  saturn:mktex(512,256,function(c,w,h){
+    var bands=['#c0983a','#ddb858','#a87830','#cca848','#b89040','#d8c060','#a07028'];
+    var bh=h/bands.length;
+    bands.forEach(function(col,i){c.fillStyle=col;c.fillRect(0,i*bh,w,bh+2);});
+    for(var y=0;y<h;y+=2){
+      c.fillStyle='rgba(0,0,0,0.03)';c.fillRect(Math.sin(y*0.15)*8,y,w,1);
+    }
+  }),
+  uranus:mktex(512,256,function(c,w,h){
+    var g=c.createLinearGradient(0,0,0,h);
+    g.addColorStop(0,'#90d0cc');g.addColorStop(0.5,'#70bcc0');g.addColorStop(1,'#50a8b8');
+    c.fillStyle=g;c.fillRect(0,0,w,h);
+    c.fillStyle='rgba(140,200,210,0.25)';c.fillRect(0,h*0.3,w,h*0.4);
+  }),
+  neptune:mktex(512,256,function(c,w,h){
+    var g=c.createLinearGradient(0,0,0,h);
+    g.addColorStop(0,'#203898');g.addColorStop(0.45,'#1828b8');g.addColorStop(1,'#102070');
+    c.fillStyle=g;c.fillRect(0,0,w,h);
+    c.fillStyle='rgba(40,80,200,0.45)';c.fillRect(0,h*0.38,w,h*0.18);
+    c.beginPath();c.ellipse(w*0.35,h*0.47,22,14,0,0,Math.PI*2);
+    c.fillStyle='rgba(10,20,100,0.5)';c.fill();
+  })
+};
+
+/* ─ SUN ─ */
+var sunMesh=new THREE.Mesh(
+  new THREE.SphereGeometry(12,64,64),
+  new THREE.MeshBasicMaterial({map:TEXTURES.sun})
+);
+scene.add(sunMesh);
+[{r:17,o:0.14,c:'#ff8800'},{r:22,o:0.08,c:'#ffaa00'},{r:30,o:0.04,c:'#ff6600'}].forEach(function(g){
+  scene.add(new THREE.Mesh(
+    new THREE.SphereGeometry(g.r,32,32),
+    new THREE.MeshBasicMaterial({color:new THREE.Color(g.c),transparent:true,opacity:g.o,
+      side:THREE.BackSide,blending:THREE.AdditiveBlending,depthWrite:false})
+  ));
+});
+scene.add(new THREE.PointLight(0xffe8a0,3.0,700));
+scene.add(new THREE.AmbientLight(0x080c14,2.5));
+
+/* ─ ORBIT LINE ─ */
+function orbitLine(r){
+  var pts=[];for(var i=0;i<=128;i++){var a=(i/128)*Math.PI*2;pts.push(new THREE.Vector3(Math.cos(a)*r,0,Math.sin(a)*r));}
+  return new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),
+    new THREE.LineBasicMaterial({color:0x162a1a,transparent:true,opacity:0.35}));
+}
+
+/* ─ PLANET DATA ─ */
+/* speed = how many degrees per second in real time (scaled for visibility) */
+var EARTH_REAL_PERIOD = 45; /* Earth completes orbit in 45 real seconds */
+var PD=[
+  {key:'mercury',r:2.0, orb:25, tex:TEXTURES.mercury, tilt:0.01, period:88,  rings:false, atm:null},
+  {key:'venus',  r:3.2, orb:36, tex:TEXTURES.venus,   tilt:3.09, period:225, rings:false, atm:'#ffdd88'},
+  {key:'earth',  r:3.4, orb:52, tex:TEXTURES.earth,   tilt:0.41, period:365, rings:false, atm:'#4488ff'},
+  {key:'mars',   r:2.5, orb:70, tex:TEXTURES.mars,    tilt:0.44, period:687, rings:false, atm:'#ff6622'},
+  {key:'jupiter',r:7.5, orb:100,tex:TEXTURES.jupiter, tilt:0.05, period:4333,rings:false, atm:null},
+  {key:'saturn', r:6.2, orb:130,tex:TEXTURES.saturn,  tilt:0.47, period:10759,rings:true, atm:null},
+  {key:'uranus', r:4.5, orb:160,tex:TEXTURES.uranus,  tilt:1.71, period:30687,rings:true, atm:'#88ddcc'},
+  {key:'neptune',r:4.0, orb:190,tex:TEXTURES.neptune, tilt:0.49, period:60190,rings:false,atm:'#2244ff'},
+];
+
+var pMeshes=[];
+PD.forEach(function(d){
+  scene.add(orbitLine(d.orb));
+  /* planet */
+  var m=new THREE.Mesh(
+    new THREE.SphereGeometry(d.r,48,48),
+    new THREE.MeshPhongMaterial({map:d.tex,shininess:18,specular:new THREE.Color(0x111111)})
+  );
+  m.rotation.z=d.tilt;
+  scene.add(m);
+  /* atmosphere */
+  if(d.atm){
+    scene.add(new THREE.Mesh(
+      new THREE.SphereGeometry(d.r*1.1,32,32),
+      new THREE.MeshBasicMaterial({color:new THREE.Color(d.atm),transparent:true,opacity:0.1,
+        side:THREE.BackSide,blending:THREE.AdditiveBlending,depthWrite:false})
+    ));
+  }
+  /* rings */
+  if(d.rings){
+    var rg=new THREE.RingGeometry(d.r*1.4,d.r*2.5,80);
+    rg.applyMatrix4(new THREE.Matrix4().makeRotationX(-Math.PI/2));
+    var ringM=new THREE.Mesh(rg,new THREE.MeshBasicMaterial({
+      color:new THREE.Color(d.key==='saturn'?'#c8aa60':'#80bbcc'),
+      side:THREE.DoubleSide,transparent:true,opacity:0.55,
+      blending:THREE.AdditiveBlending,depthWrite:false
+    }));
+    scene.add(ringM);
+    m._ring=ringM;
+  }
+  /* earth moon */
+  if(d.key==='earth'){
+    var moon=new THREE.Mesh(
+      new THREE.SphereGeometry(0.9,20,20),
+      new THREE.MeshPhongMaterial({color:0xaaaaaa,shininess:5})
+    );
+    scene.add(moon);m._moon=moon;m._moonA=Math.random()*Math.PI*2;
+  }
+  m._d=d;
+  m._angle=Math.random()*Math.PI*2;
+  /* angular speed in radians per second (real time) */
+  m._spd=(2*Math.PI/EARTH_REAL_PERIOD)*(365/d.period);
+  pMeshes.push(m);
+});
+
+/* ─ SCROLL CAMERA ─ */
+var KEYS=[
+  {p:[0,   80, 200]},
+  {p:[190, 45,  90]},
+  {p:[-130,-35, 150]},
+  {p:[15,  210,  18]},
+];
+function lp(a,b,t){return a+(b-a)*t;}
+function camAt(prog){
+  var S=KEYS.length-1,raw=prog*S,idx=Math.floor(raw),fr=raw-idx;
+  if(idx>=S){idx=S-1;fr=1;}
+  var A=KEYS[idx],B=KEYS[idx+1];
+  return[lp(A.p[0],B.p[0],fr),lp(A.p[1],B.p[1],fr),lp(A.p[2],B.p[2],fr)];
+}
+var sp=0,cT={x:0,y:80,z:200},cC={x:0,y:80,z:200};
+window.addEventListener('scroll',function(){
+  var mx=document.documentElement.scrollHeight-window.innerHeight;
+  sp=mx>0?window.scrollY/mx:0;
+  var v=camAt(sp);cT.x=v[0];cT.y=v[1];cT.z=v[2];
+},{passive:true});
+
+/* ─ ANIMATION LOOP ─ */
+var clock=new THREE.Clock();
+function loop(){
+  requestAnimationFrame(loop);
+  var dt=Math.min(clock.getDelta(),0.05);
+  var el=clock.getElapsedTime();
+  /* stars twinkle */
+  sMat.uniforms.uTime.value=el;
+  /* sun rotation */
+  sunMesh.rotation.y+=0.004;
+  /* planet orbits */
+  pMeshes.forEach(function(m){
+    m._angle+=m._spd*dt;
+    var x=Math.cos(m._angle)*m._d.orb;
+    var z=Math.sin(m._angle)*m._d.orb;
+    m.position.set(x,0,z);
+    m.rotation.y+=0.008;
+    if(m._ring)m._ring.position.set(x,0,z);
+    if(m._moon){
+      m._moonA+=0.5*dt;
+      m._moon.position.set(
+        x+Math.cos(m._moonA)*(m._d.r*2.8),
+        Math.sin(m._moonA*0.3)*0.8,
+        z+Math.sin(m._moonA)*(m._d.r*2.8)
+      );
+    }
+  });
+  /* smooth camera */
+  cC.x+=(cT.x-cC.x)*0.028;cC.y+=(cT.y-cC.y)*0.028;cC.z+=(cT.z-cC.z)*0.028;
+  cam.position.set(cC.x,cC.y,cC.z);cam.lookAt(0,0,0);
+  /* fade on scroll */
+  /* opacity fixed — no fade on scroll */
+  renderer.render(scene,cam);
+}
+loop();
+})();
+
+</script>
+</body>
+</html>
