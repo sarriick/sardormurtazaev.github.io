@@ -222,3 +222,12 @@ a{color:inherit;text-decoration:none}
   .cr,.cd{display:none}
   .tlr{grid-template-columns:65px 22px 1fr;gap:0 .7rem}
 }
+
+/* ── PARALLAX LAYERS ── */
+.hi > *{will-change:transform,opacity}
+.hi{will-change:opacity}
+.eye,.hname,.htags,.hdesc,.hbtns,.hscr{transition:none}
+.b1,.b2{transition:none!important}
+#fc{transition:none}
+/* hero fade on scroll */
+.hi{transition:opacity .1s linear}
