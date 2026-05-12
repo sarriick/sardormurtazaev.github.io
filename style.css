@@ -231,3 +231,21 @@ a{color:inherit;text-decoration:none}
 #fc{transition:none}
 /* hero fade on scroll */
 .hi{transition:opacity .1s linear}
+
+/* ── SOLAR SYSTEM BACKGROUND ── */
+#solar-bg{
+  position:fixed;top:0;left:0;
+  width:100%;height:100%;
+  z-index:0;
+  pointer-events:none;
+  display:block;
+}
+/* raise all page content above solar bg */
+.noise{z-index:2}
+.cr,.cd,.rw{z-index:9999}
+.nav{z-index:500}
+.hero{z-index:1}
+.hero #fc{z-index:1}
+.hero .bl{z-index:1}
+.hero .hi{z-index:3}
+.sec,.stb,.sdk,.foot{position:relative;z-index:2}
