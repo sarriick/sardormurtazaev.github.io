@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sardor Murtazaev | Finance &amp; AI | Sejong University</title>
-<meta name="description" content="Sardor Murtazaev - MBA candidate in Finance &amp; AI at Sejong University. Credit risk, banking analytics, algorithmic fairness.">
+<meta name="description" content="Sardor Murtazaev - MBA in Finance &amp; AI, Sejong University. Credit risk, banking analytics, algorithmic fairness.">
 <meta name="author" content="Sardor Murtazaev">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Sardor Murtazaev","url":"https://sardormurtazaev.github.io","jobTitle":"MBA Candidate in Finance and AI","nationality":{"@type":"Country","name":"Uzbekistan"},"sameAs":["https://linkedin.com/in/sadomu","https://github.com/sardormurtazaev"]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,6 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <style>
+
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -107,8 +108,9 @@ a{color:inherit;text-decoration:none}
 .sh.centered{text-align:center}
 .ssub{color:var(--cmt);font-size:.95rem;max-width:540px;margin-bottom:3rem}
 
-.sr{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.16,1,.3,1)}
-.sr.in{opacity:1;transform:none}
+.sr{opacity:1;transform:none;transition:opacity .7s ease,transform .7s cubic-bezier(.16,1,.3,1)}
+.js-ready .sr{opacity:0;transform:translateY(24px)}
+.js-ready .sr.in{opacity:1;transform:none}
 
 .abg{display:grid;grid-template-columns:1fr 310px;gap:5rem;align-items:start}
 .abl p{color:rgba(232,223,200,.68);font-size:.97rem;margin-bottom:1.3rem}
@@ -219,9 +221,9 @@ a{color:inherit;text-decoration:none}
   .fcg{grid-template-columns:1fr}
   .fr{flex-direction:column;gap:.5rem;text-align:center}
   body{cursor:auto}
-  .cr,.cd{display:none}
   .tlr{grid-template-columns:65px 22px 1fr;gap:0 .7rem}
 }
+
 
 </style>
 </head>
@@ -374,7 +376,9 @@ a{color:inherit;text-decoration:none}
 </div></footer>
 
 
+
 <script>
+
 (function(){
 'use strict';
 
@@ -557,6 +561,7 @@ document.querySelectorAll('.bp,.bg,.cl').forEach(function(el){
 /* ══════════════════════════════════════════
    SCROLL REVEAL  (stagger siblings)
    ══════════════════════════════════════════ */
+document.body.classList.add('js-ready');
 var srObs=new IntersectionObserver(function(entries){
   entries.forEach(function(e){
     if(!e.isIntersecting)return;
@@ -607,8 +612,10 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a){
   applyParallax();
   requestAnimationFrame(mouseTick);
 })();
+
 </script>
 <script>
+
 (function(){
 'use strict';
 if(typeof THREE==='undefined'){return;}
@@ -920,6 +927,7 @@ function loop(){
 }
 loop();
 })();
+
 </script>
 </body>
 </html>
