@@ -287,6 +287,30 @@ a{color:inherit;text-decoration:none}
 .hero{z-index:1}.hero #fc{z-index:1}.hero .bl{z-index:1}.hero .hi{z-index:3}
 .hi>*{will-change:transform,opacity}.hi{will-change:opacity;transition:opacity .1s linear}
 .eye,.hname,.htags,.hdesc,.hbtns,.hscr{transition:none}.b1,.b2{transition:none!important}
+
+/* ── SECTION DIVIDERS ── */
+.sdiv{
+  position:relative;height:1px;margin:0;z-index:3;
+  background:linear-gradient(90deg,
+    transparent 0%,
+    rgba(106,158,114,.18) 15%,
+    rgba(176,128,96,.45) 50%,
+    rgba(106,158,114,.18) 85%,
+    transparent 100%);
+}
+.sdiv::before{
+  content:'';position:absolute;left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  width:8px;height:8px;border-radius:50%;
+  background:#b08060;
+  box-shadow:0 0 10px 2px rgba(106,158,114,.5);
+}
+#solar-bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;display:block}
+.noise{z-index:2}.cr,.cd,.rw{z-index:9999}.nav{z-index:500}
+.hero{z-index:1}.hero #fc{z-index:1}.hero .bl{z-index:1}.hero .hi{z-index:3}
+.hi>*{will-change:transform,opacity}.hi{will-change:opacity;transition:opacity .1s linear}
+.eye,.hname,.htags,.hdesc,.hbtns,.hscr{transition:none}.b1,.b2{transition:none!important}
+.sdiv,.sec-divider{z-index:3;position:relative}
 </style>
 </head>
 <body>
@@ -300,11 +324,11 @@ a{color:inherit;text-decoration:none}
 <nav class="nav" id="nav">
   <a class="logo" href="#hero"><b>SM</b><span>Finance &amp; AI</span></a>
   <ul class="nlinks">
-    <li><a href="#about" data-text="About">About</a></li>
-    <li><a href="#focus" data-text="Focus">Focus</a></li>
-    <li><a href="#projects" data-text="Projects">Projects</a></li>
-    <li><a href="#timeline" data-text="Experience">Experience</a></li>
-    <li><a href="#contact" data-text="Contact">Contact</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#focus">Focus</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#timeline">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nprog" id="nprog"></div>
 </nav>
@@ -314,7 +338,7 @@ a{color:inherit;text-decoration:none}
   <div class="bl b1"></div><div class="bl b2"></div>
   <div class="hi">
     <p class="eye"><span class="edot"></span>Seoul, South Korea &nbsp;&middot;&nbsp; Uzbekistan</p>
-    <h1 class="hname" id="hero-name"><span id="w1">Sardor</span><span id="w2">Murtazaev</span></h1>
+    <h1 class="hname"><span id="w1">Sardor</span><span id="w2">Murtazaev</span></h1>
     <div class="htags">
       <span>MBA Finance &amp; AI</span><em>&mdash;</em>
       <span>Sejong University</span><em>&mdash;</em>
@@ -333,6 +357,7 @@ a{color:inherit;text-decoration:none}
   <s>Credit Risk</s><i>&#10022;</i><s>AI Credit Scoring</s><i>&#10022;</i><s>Algorithmic Fairness</s><i>&#10022;</i><s>Banking Analytics</s><i>&#10022;</i><s>Power BI</s><i>&#10022;</i><s>Portfolio Optimization</s><i>&#10022;</i><s>ML in Finance</s><i>&#10022;</i><s>Trade Finance</s><i>&#10022;</i><s>Cashless Payments</s><i>&#10022;</i>
   <s>Credit Risk</s><i>&#10022;</i><s>AI Credit Scoring</s><i>&#10022;</i><s>Algorithmic Fairness</s><i>&#10022;</i><s>Banking Analytics</s><i>&#10022;</i><s>Power BI</s><i>&#10022;</i><s>Portfolio Optimization</s><i>&#10022;</i><s>ML in Finance</s><i>&#10022;</i><s>Trade Finance</s><i>&#10022;</i><s>Cashless Payments</s><i>&#10022;</i>
 </div></div>
+<div class="sdiv" aria-hidden="true"></div>
 
 <section class="sec" id="about"><div class="con"><div class="abg">
   <div class="abl">
@@ -356,8 +381,7 @@ a{color:inherit;text-decoration:none}
     </div>
   </div>
 </div></div></section>
-
-
+<div class="sdiv" aria-hidden="true"></div>
 
 <section class="stb" id="stats"><div class="con str2">
   <div class="st sr"><span class="sn" data-t="4">0</span><span class="sl">Banking internships<br>in Uzbekistan</span></div>
@@ -370,6 +394,7 @@ a{color:inherit;text-decoration:none}
   <div class="sdv"></div>
   <div class="st sr"><span class="sn" data-t="2">0</span><span class="sl">Countries studied<br>&amp; worked</span></div>
 </div></section>
+<div class="sdiv" aria-hidden="true"></div>
 
 <section class="sec sdk" id="focus"><div class="con">
   <h2 class="sh centered sr">What I am working on</h2>
@@ -382,6 +407,7 @@ a{color:inherit;text-decoration:none}
     <div class="fc tc sr"><div class="fg"></div><span class="fi">&#129302;</span><h3>ML in Finance</h3><p>Classification models for credit risk and bias mitigation using Scikit-learn and Fairlearn.</p><div class="fb"></div></div>
   </div>
 </div></section>
+<div class="sdiv" aria-hidden="true"></div>
 
 <section class="sec" id="projects"><div class="con">
   <h2 class="sh sr">Work in progress</h2>
@@ -392,6 +418,7 @@ a{color:inherit;text-decoration:none}
     <div class="pc tc sr"><div class="pn">03</div><div class="pb"><div class="pt"><span class="ps">Python &middot; Pandas &middot; Matplotlib</span><span class="pbg">In Progress</span></div><h3>Uzbekistan Cashless Payments Analysis</h3><p>Data-driven analysis of cashless payment development in Uzbekistan using Central Bank of Uzbekistan and World Bank public data.</p><a href="https://github.com/sardormurtazaev/uzbekistan-cashless-payments-analysis" class="pl2" target="_blank" rel="noopener">GitHub &rarr;</a></div><div class="pg"></div></div>
   </div>
 </div></section>
+<div class="sdiv" aria-hidden="true"></div>
 
 <section class="sec sdk" id="timeline"><div class="con">
   <h2 class="sh sr">Background &amp; Education</h2>
@@ -405,12 +432,14 @@ a{color:inherit;text-decoration:none}
     <div class="tlr sr"><div class="tly">2020&ndash;2024</div><div class="tls"><div class="tln"></div></div><div class="tlb tc"><span class="tlo">Tashkent State University of Economics</span><span class="tlro">B.Sc. Banking &amp; Audit &middot; Tashkent &middot; GPA 4.32/5.0</span><p>Undergraduate degree in Banking and Bank Audit. Publication: Beznalichnye platezhi v Uzbekistane &mdash; analysis of cashless payment system development.</p><div class="tlc"><span>Banking</span><span>Financial Audit</span><span>Academic Research</span></div></div></div>
   </div>
 </div></section>
+<div class="sdiv" aria-hidden="true"></div>
 
 <section class="sec" id="research"><div class="con narrow">
   <h2 class="sh sr">Research interests</h2>
   <div class="rc tc sr"><div class="rcb"></div><div class="rcd"><h3>Algorithmic Discrimination in AI-Based Credit Scoring</h3><p class="rcc">Ongoing &mdash; MBA research, Sejong University</p><p>As machine learning models become embedded in lending decisions, questions arise about whether they encode or amplify historical biases. My research examines proxy bias, fairness metrics, and the regulatory landscape including EU AI Act and CFPB guidance.</p></div></div>
   <div class="rc tc sr" style="margin-top:1.5rem"><div class="rcb"></div><div class="rcd"><h3>Cashless Payments in Uzbekistan <span class="bru">RU</span></h3><p class="rcc">Undergraduate publication &mdash; TSUE, Tashkent</p><p>Analysis of the development of non-cash payment instruments in Uzbekistan covering digital infrastructure, policy initiatives, and financial inclusion gaps.</p><p class="rci">Murtazaev S.O. Beznalichnye platezhi v Uzbekistane &mdash; TSUE</p></div></div>
 </div></section>
+<div class="sdiv" aria-hidden="true"></div>
 
 <section class="sec sdk" id="contact"><div class="con narrow centered">
   <h2 class="sh sr">Let us connect</h2>
@@ -427,10 +456,6 @@ a{color:inherit;text-decoration:none}
   <span>&copy; Sardor Murtazaev &middot; Seoul 2025</span>
   <span class="fa">Sardor Murtazaev &middot; Murtazaev Sardor &middot; &#1052;&#1091;&#1088;&#1090;&#1072;&#1079;&#1072;&#1077;&#1074; &#1057;&#1072;&#1088;&#1076;&#1086;&#1088;</span>
 </div></footer>
-
-
-
-
 
 <script>
 (function(){
