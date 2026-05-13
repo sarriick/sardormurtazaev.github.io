@@ -106,8 +106,8 @@ function applyParallax(){
   if(v > heroH) return;
 
   /* ── Background blobs: slowest (like rocks/water in Jungle) ── */
-  if(plxB1) plxB1.style.transform = 'translate('+(v*0.04)+'px,'+(v*-0.18)+'px)';
-  if(plxB2) plxB2.style.transform = 'translate('+(v*-0.06)+'px,'+(v*-0.12)+'px)';
+    if(plxB1) plxB1.style.transform='translate('+(v*0.04+mouseOffX*22)+'px,'+(v*-0.18+mouseOffY*15)+'px)';
+  if(plxB2) plxB2.style.transform='translate('+(v*-0.06+mouseOffX*-14)+'px,'+(v*-0.12+mouseOffY*-10)+'px)';
 
   /* ── Canvas drifts up very slowly (like forest layer) ── */
   if(plxCanvas) plxCanvas.style.transform = 'translateY('+(v*0.08)+'px)';
@@ -129,82 +129,7 @@ function applyParallax(){
   if(plxScr)  plxScr.style.transform  = 'translateY('+(v*-0.5)+'px)';
 }
 
-/* Fade hero content out as user scrolls away */
-function heroFade(){
-  var v = window.scrollY;
-  var hero = document.getElementById('hero');
-  if(!hero) return;
-  var heroH = hero.offsetHeight;
-  var hi = document.querySelector('.hi');
-  if(!hi) return;
-  var fade = Math.max(0, 1 - (v / (heroH * 0.55)));
-  hi.style.opacity = fade;
-}
-
-/* ── MOUSE PARALLAX on hero (adds to scroll parallax) ── */
-var heroEl = document.getElementById('hero');
-var mouseOffX = 0, mouseOffY = 0;
-var targetOX  = 0, targetOY  = 0;
-
-document.addEventListener('mousemove', function(e){
-  if(!heroEl) return;
-  var r = heroEl.getBoundingClientRect();
-  /* Only active while mouse is over hero */
-  if(e.clientY > r.bottom) return;
-  targetOX = (e.clientX / window.innerWidth  - 0.5) * 2;
-  targetOY = (e.clientY / window.innerHeight - 0.5) * 2;
-});
-
-(function mouseParallaxTick(){
-  mouseOffX += (targetOX - mouseOffX) * 0.06;
-  mouseOffY += (targetOY - mouseOffY) * 0.06;
-  /* Blend mouse offset INTO the blobs (independent of scroll) */
-  if(plxB1 && window.scrollY < (heroEl ? heroEl.offsetHeight : 9999)){
-    var cur1 = plxB1.style.transform || '';
-    /* Override with combined scroll+mouse */
-    var sv = window.scrollY;
-    plxB1.style.transform = 'translate('+
-      (sv*0.04 + mouseOffX*22)+'px,'+
-      (sv*-0.18 + mouseOffY*15)+'px)';
-    if(plxB2) plxB2.style.transform = 'translate('+
-      (sv*-0.06 + mouseOffX*-14)+'px,'+
-      (sv*-0.12 + mouseOffY*-10)+'px)';
-  }
-  requestAnimationFrame(mouseParallaxTick);
-})();
-
-/* ── Combined scroll handler ── */
-window.addEventListener('scroll', function(){
-  applyParallax();
-  heroFade();
-
-  /* Nav progress + stuck */
-  var sy  = window.scrollY;
-  var max = document.documentElement.scrollHeight - window.innerHeight;
-  var np  = document.getElementById('nprog');
-  var nav = document.getElementById('nav');
-  if(np)  np.style.width  = (max > 0 ? (sy/max)*100 : 0)+'%';
-  if(nav) nav.classList.toggle('stuck', sy > 60);
-},{passive:true});
-
-/* ── NAV initial stuck check ── */
-(function(){
-  var nav = document.getElementById('nav');
-  var np  = document.getElementById('nprog');
-  if(nav) nav.classList.toggle('stuck', window.scrollY > 60);
-})();
-
-/* ══════════════════════════════════════════
-   LETTER SCRAMBLE  (hero name)
-   ══════════════════════════════════════════ */
-var CH='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789#@$%';
-function scramble(el,ch,delay){
-  setTimeout(function(){
-    var n=0,max=10;
-    var iv=setInterval(function(){
-      el.textContent=CH[Math.floor(Math.random()*CH.length)];
-      n++;if(n>=max){clearInterval(iv);el.textContent=ch;}
-    },55);
+,55);
   },delay);
 }
 function buildWord(id,word,base){
@@ -219,8 +144,8 @@ function buildWord(id,word,base){
     })(s,word[i],base+i*65);
   }
 }
-buildWord('w1','Sardor',300);
-buildWord('w2','Murtazaev',650);
+if(document.getElementById('w1'))buildWord('w1','Sardor',300);
+if(document.getElementById('w2'))buildWord('w2','Murtazaev',650);
 
 /* ══════════════════════════════════════════
    3D TILT on cards
@@ -295,4 +220,13 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a){
   });
 });
 
+})();
+
+
+/* ── UNIFIED PARALLAX RAF — smooth blob+mouse response every frame ── */
+(function mouseTick(){
+  mouseOffX += (targetOX - mouseOffX) * 0.06;
+  mouseOffY += (targetOY - mouseOffY) * 0.06;
+  applyParallax();
+  requestAnimationFrame(mouseTick);
 })();
