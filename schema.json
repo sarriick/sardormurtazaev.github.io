@@ -6,9 +6,9 @@
     "Murtazaev Sardor",
     "Murtazaev Sardor Orzuyevich",
     "Sardor Orzuyevich Murtazaev",
-    "Муртазаев Сардор",
-    "Муртазаев Сардор Орзуевич",
-    "Сардор Муртазаев"
+    "\u041c\u0443\u0440\u0442\u0430\u0437\u0430\u0435\u0432 \u0421\u0430\u0440\u0434\u043e\u0440",
+    "\u041c\u0443\u0440\u0442\u0430\u0437\u0430\u0435\u0432 \u0421\u0430\u0440\u0434\u043e\u0440 \u041e\u0440\u0437\u0443\u0435\u0432\u0438\u0447",
+    "\u0421\u0430\u0440\u0434\u043e\u0440 \u041c\u0443\u0440\u0442\u0430\u0437\u0430\u0435\u0432"
   ],
   "url": "https://sardormurtazaev.github.io",
   "description": "MBA candidate in Finance & AI at Sejong University (South Korea). Early-career professional focused on credit risk analysis, banking analytics, and algorithmic fairness in AI-based credit scoring. Originally from Uzbekistan.",
@@ -17,7 +17,12 @@
     "@type": "Country",
     "name": "Uzbekistan"
   },
-  "knowsLanguage": ["uz", "ru", "en", "ko"],
+  "knowsLanguage": [
+    "uz",
+    "ru",
+    "en",
+    "ko"
+  ],
   "knowsAbout": [
     "Credit Risk Analysis",
     "AI-Based Credit Scoring",
@@ -66,7 +71,7 @@
     "addressCountry": "KR"
   },
   "sameAs": [
-    "https://linkedin.com/in/sardormurtazaev",
+    "https://linkedin.com/in/sadomu",
     "https://github.com/sardormurtazaev"
   ]
 }
