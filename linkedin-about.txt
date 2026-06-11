@@ -1,0 +1,106 @@
+LINKEDIN — ABOUT SECTION
+========================
+Copy this text directly into your LinkedIn "About" section.
+Remove this header before pasting.
+Character count: ~1,850 (LinkedIn limit is ~2,600)
+
+
+I'm an MBA candidate in Finance & AI at Sejong University (Seoul, South Korea),
+with a background in banking and financial operations from Uzbekistan.
+
+My interests sit at the intersection of credit risk management, data analytics,
+and machine learning — particularly how AI is reshaping credit decisions, and
+what that means for fairness and financial regulation.
+
+─────────────────────────────────────────────
+BANKING BACKGROUND
+─────────────────────────────────────────────
+
+During my undergraduate years at Tashkent State University of Economics, I completed
+internships at three Uzbek commercial banks:
+
+• Halk Bank — Legal & Credit Documentation: processing and verifying credit files,
+  collateral records, and compliance checklists for loan agreements.
+
+• Aloqa Bank — Foreign Currency & Trade Finance: supporting letters of credit operations,
+  foreign currency transactions, and correspondent bank documentation.
+
+• Asaka Bank — Credit Monitoring: tracking loan portfolio performance, preparing
+  monitoring reports, and developing familiarity with credit risk classification.
+
+These roles gave me a practical foundation in how lending and risk management
+work within institutional banking settings.
+
+─────────────────────────────────────────────
+WHAT I'M BUILDING NOW
+─────────────────────────────────────────────
+
+In my current graduate studies, I'm developing skills in:
+→ Financial modeling and quantitative analysis
+→ Machine learning in finance (credit scoring, risk modeling)
+→ Data visualization with Power BI
+→ Research on algorithmic fairness in AI-based credit systems
+
+My research focus: how automated lending models can produce or amplify biased
+outcomes — and what technical and regulatory responses are emerging.
+
+─────────────────────────────────────────────
+OPEN TO
+─────────────────────────────────────────────
+
+Internship and entry-level roles in:
+✦ Finance Analysis / Financial Risk Management
+✦ Credit Risk Analysis
+✦ Business Analytics / Data Analytics
+✦ AI-in-Finance roles
+
+─────────────────────────────────────────────
+
+Languages: Uzbek (native) · Russian (fluent) · English (professional) · Korean (basic)
+📍 Seoul, South Korea · 🎓 Sejong University MBA · 🇺🇿 Originally from Uzbekistan
+
+
+========================
+LINKEDIN — HEADLINE OPTIONS
+========================
+Pick one:
+
+Option A (recommended):
+MBA Finance & AI Candidate | Credit Risk | Banking Analytics | Sejong University
+
+Option B (role-focused):
+Finance & AI Graduate Student | Building skills in Credit Risk & Data Analytics | Sejong University
+
+Option C (research-forward):
+MBA Candidate | Researching Algorithmic Fairness in AI Credit Scoring | Sejong University
+
+
+========================
+LINKEDIN — FIRST POST
+========================
+Copy and post as-is, or lightly edit to your voice.
+
+
+I'm starting to share my work publicly — here's a quick introduction.
+
+I'm Sardor, an MBA candidate in Finance & AI at Sejong University in Seoul.
+I come from a banking background in Uzbekistan (internships at Halk Bank,
+Aloqa Bank, and Asaka Bank), and I'm currently focused on what happens when
+machine learning enters the credit decision-making process.
+
+Specifically, I'm researching algorithmic discrimination in AI-based credit
+scoring — whether automated lending models can produce outcomes that
+systematically disadvantage certain groups, even without explicit intent.
+
+It's a question that matters not just technically, but in terms of financial
+inclusion and the real-world consequences for people who depend on access to credit.
+
+Over the coming months, I'll be sharing:
+→ Projects I'm building (credit risk dashboards, fairness analysis, portfolio models)
+→ Notes from MBA coursework in finance and machine learning
+→ Observations on AI, banking, and regulation
+
+If you work in credit risk, banking analytics, or responsible AI in finance —
+I'd genuinely like to connect.
+
+#CreditRisk #FinanceAI #AlgorithmicFairness #Banking #DataAnalytics #MBA
