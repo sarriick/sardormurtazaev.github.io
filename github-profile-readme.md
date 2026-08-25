@@ -1,10 +1,10 @@
 # Hi, I'm Sardor Murtazaev 👋
 
-**MBA Candidate in Finance & AI · Sejong University, Seoul, South Korea**
+**MBA in Finance & AI · Sejong University, Seoul, South Korea**
 
 ---
 
-I'm a graduate student with a background in banking, building skills at the intersection
+I'm an MBA graduate with a background in banking, building skills at the intersection
 of financial risk management, data analytics, and machine learning.
 
 Before graduate school, I completed internships at three Uzbek commercial banks —
@@ -39,8 +39,8 @@ Cashless Payments          →  Uzbekistan payment system analysis
 
 ## Education
 
-- 🎓 **MBA in Finance & AI** — Sejong University, South Korea *(current)*
-- 🎓 **B.Sc. Banking & Bank Audit** — Tashkent State University of Economics, Uzbekistan
+- 🎓 **MBA in Finance & AI** — Sejong University, South Korea *(2024–2026, GPA 4.33/4.5)*
+- 🎓 **B.Sc. Banking & Bank Audit** — Tashkent State University of Economics, Uzbekistan *(2020–2024, GPA 4.34/5.0)*
 
 ---
 

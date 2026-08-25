@@ -1,6 +1,6 @@
 # sardormurtazaev.github.io
 
-Personal website of **Sardor Murtazaev** — MBA candidate in Finance & AI at Sejong University, Seoul.
+Personal website of **Sardor Murtazaev** — MBA graduate in Finance & AI from Sejong University, Seoul.
 
 🌐 **Live:** [sarriick.github.io/sardormurtazaev.github.io](https://sarriick.github.io/sardormurtazaev.github.io)
 
@@ -97,7 +97,7 @@ After pushing: **`Ctrl + Shift + R`** (hard refresh) to bypass browser cache.
 
 - All JS/CSS is inlined in `index.html` — there are no external CSS/JS files to edit
 - `body.js-ready` class is added by JS before the scroll-reveal observer — ensures text is always visible even if JS fails
-- Stat counters use a `_done` guard and a `data-dec` attribute for decimal formatting (GPA 4.28 = `data-t="428" data-dec="2"`)
+- Stat counters use a `_done` guard and a `data-dec` attribute for decimal formatting (GPA 4.33 = `data-t="433" data-dec="2"`)
 - Custom cursor starts at `window.innerWidth/2, window.innerHeight/2` to avoid the top-left corner freeze before first mouse move
 - The site respects `prefers-reduced-motion`: animations are disabled and the solar system renders one static frame
 - On screens ≤640px a hamburger menu replaces the nav links; star count and pixel ratio are reduced for performance

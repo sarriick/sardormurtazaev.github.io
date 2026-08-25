@@ -5,7 +5,7 @@ Remove this header before pasting.
 Character count: ~1,850 (LinkedIn limit is ~2,600)
 
 
-I'm an MBA candidate in Finance & AI at Sejong University (Seoul, South Korea),
+I hold an MBA in Finance & AI from Sejong University (Seoul, South Korea),
 with a background in banking and financial operations from Uzbekistan.
 
 My interests sit at the intersection of credit risk management, data analytics,
@@ -35,7 +35,7 @@ work within institutional banking settings.
 WHAT I'M BUILDING NOW
 ─────────────────────────────────────────────
 
-In my current graduate studies, I'm developing skills in:
+During my MBA studies, I developed skills in:
 → Financial modeling and quantitative analysis
 → Machine learning in finance (credit scoring, risk modeling)
 → Data visualization with Power BI
@@ -48,7 +48,7 @@ outcomes — and what technical and regulatory responses are emerging.
 OPEN TO
 ─────────────────────────────────────────────
 
-Internship and entry-level roles in:
+Open to entry-level opportunities in:
 ✦ Finance Analysis / Financial Risk Management
 ✦ Credit Risk Analysis
 ✦ Business Analytics / Data Analytics
@@ -66,13 +66,13 @@ LINKEDIN — HEADLINE OPTIONS
 Pick one:
 
 Option A (recommended):
-MBA Finance & AI Candidate | Credit Risk | Banking Analytics | Sejong University
+MBA Finance & AI | Credit Risk | Banking Analytics | Data Analytics
 
 Option B (role-focused):
-Finance & AI Graduate Student | Building skills in Credit Risk & Data Analytics | Sejong University
+MBA Finance & AI | Credit Risk & Data Analytics | Sejong University
 
 Option C (research-forward):
-MBA Candidate | Researching Algorithmic Fairness in AI Credit Scoring | Sejong University
+MBA Finance & AI | Algorithmic Fairness in AI Credit Scoring | Sejong University
 
 
 ========================
@@ -83,7 +83,7 @@ Copy and post as-is, or lightly edit to your voice.
 
 I'm starting to share my work publicly — here's a quick introduction.
 
-I'm Sardor, an MBA candidate in Finance & AI at Sejong University in Seoul.
+I'm Sardor, an MBA graduate in Finance & AI from Sejong University in Seoul.
 I come from a banking background in Uzbekistan (internships at Halk Bank,
 Aloqa Bank, and Asaka Bank), and I'm currently focused on what happens when
 machine learning enters the credit decision-making process.
